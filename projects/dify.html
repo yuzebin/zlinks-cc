@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dify - LLM应用开发平台 | Zebin Yu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #b829f7;
+            --accent-pink: #ff006e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient-hero: linear-gradient(135deg, #00f0ff 0%, #b829f7 50%, #ff006e 100%);
+        }
+        /* Light Theme */
+        [data-theme="light"] {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f0f0f5;
+            --bg-tertiary: #e8e8ed;
+            --accent-cyan: #0066cc;
+            --accent-purple: #7c3aed;
+            --accent-pink: #db2777;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a5c;
+            --text-muted: #8a8a9a;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --gradient-hero: linear-gradient(135deg, #0066cc 0%, #7c3aed 50%, #db2777 100%);
+        }
+
+        /* Ocean Theme */
+        [data-theme="ocean"] {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1d33;
+            --bg-tertiary: #152540;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #0099ff;
+            --accent-pink: #00b4d8;
+            --text-primary: #caf0f8;
+            --text-secondary: #90e0ef;
+            --text-muted: #48cae4;
+            --border-color: rgba(0, 212, 255, 0.15);
+            --gradient-hero: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #0077b6 100%);
+        }
+
+        /* Forest Theme */
+        [data-theme="forest"] {
+            --bg-primary: #0a1f0a;
+            --bg-secondary: #0f2f0f;
+            --bg-tertiary: #143d14;
+            --accent-cyan: #4ade80;
+            --accent-purple: #22c55e;
+            --accent-pink: #16a34a;
+            --text-primary: #dcfce7;
+            --text-secondary: #86efac;
+            --text-muted: #4ade80;
+            --border-color: rgba(74, 222, 128, 0.15);
+            --gradient-hero: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+        }
+
+        /* Sunset Theme */
+        [data-theme="sunset"] {
+            --bg-primary: #1a0a0a;
+            --bg-secondary: #2d1212;
+            --bg-tertiary: #401818;
+            --accent-cyan: #fb923c;
+            --accent-purple: #f97316;
+            --accent-pink: #ef4444;
+            --text-primary: #ffedd5;
+            --text-secondary: #fdba74;
+            --text-muted: #fb923c;
+            --border-color: rgba(251, 146, 60, 0.15);
+            --gradient-hero: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ef4444 100%);
+        }
+
+        /* Aurora Theme */
+        [data-theme="aurora"] {
+            --bg-primary: #0f0518;
+            --bg-secondary: #1a0a25;
+            --bg-tertiary: #250f35;
+            --accent-cyan: #e879f9;
+            --accent-purple: #d946ef;
+            --accent-pink: #a855f7;
+            --text-primary: #fae8ff;
+            --text-secondary: #e9d5ff;
+            --text-muted: #c084fc;
+            --border-color: rgba(232, 121, 249, 0.15);
+            --gradient-hero: linear-gradient(135deg, #e879f9 0%, #d946ef 50%, #a855f7 100%);
+        }
+
+        /* Monochrome Theme */
+        [data-theme="mono"] {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #141414;
+            --accent-cyan: #ffffff;
+            --accent-purple: #b0b0b0;
+            --accent-pink: #808080;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #505050;
+            --border-color: rgba(255, 255, 255, 0.15);
+            --gradient-hero: linear-gradient(135deg, #ffffff 0%, #a0a0a0 50%, #606060 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans SC', 'Space Grotesk', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 6px 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-cyan);
+        }
+
+        /* Theme Panel */
+        .theme-panel {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            z-index: 1000;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .theme-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .theme-panel-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .theme-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+        }
+
+        .theme-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .theme-option.active {
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        .theme-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .theme-name {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .theme-option.active .theme-name {
+            color: var(--accent-cyan);
+        }
+
+        .theme-preview-dark { background: linear-gradient(135deg, #0a0a0f, #1a1a25); }
+        .theme-preview-light { background: linear-gradient(135deg, #fafafa, #e8e8ed); }
+        .theme-preview-ocean { background: linear-gradient(135deg, #0a1628, #152540); }
+        .theme-preview-forest { background: linear-gradient(135deg, #0a1f0a, #143d14); }
+        .theme-preview-sunset { background: linear-gradient(135deg, #1a0a0a, #401818); }
+        .theme-preview-aurora { background: linear-gradient(135deg, #0f0518, #250f35); }
+        .theme-preview-mono { background: linear-gradient(135deg, #000000, #141414); }
+
+        @media (max-width: 768px) {
+            .theme-toggle { width: 48px; height: 48px; bottom: 1.5rem; right: 1.5rem; }
+            .theme-panel { right: 1.5rem; bottom: 4.5rem; min-width: 180px; }
+        }
+nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+            justify-self: center;
+        }
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover { color: var(--accent-cyan); }
+        .project-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .project-hero {
+            max-width: 1000px;
+            text-align: center;
+            z-index: 1;
+        }
+        .project-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(184, 41, 247, 0.1));
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+        }
+        .project-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        .project-tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            color: var(--text-secondary);
+        }
+        .tag.primary {
+            background: rgba(0, 240, 255, 0.1);
+            border-color: rgba(0, 240, 255, 0.3);
+            color: var(--accent-cyan);
+        }
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section {
+            margin-bottom: 4rem;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 1.5rem;
+            background: var(--gradient-hero);
+            border-radius: 2px;
+        }
+        .section-content {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .section-content p {
+            margin-bottom: 1rem;
+        }
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .tech-category {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .tech-category h4 {
+            font-size: 0.875rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .tech-list {
+            list-style: none;
+        }
+        .tech-list li {
+            padding: 0.375rem 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        .tech-list li::before {
+            content: '›';
+            color: var(--accent-purple);
+            margin-right: 0.5rem;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .feature-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-4px);
+        }
+        .feature-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        .feature-card p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        .links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--gradient-hero);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+        }
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+        .footer-links a svg {
+            width: 20px;
+            height: 20px;
+        }
+        @media (max-width: 768px) {
+            
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 6px 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-cyan);
+        }
+
+        /* Theme Panel */
+        .theme-panel {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            z-index: 1000;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .theme-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .theme-panel-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .theme-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+        }
+
+        .theme-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .theme-option.active {
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        .theme-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .theme-name {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .theme-option.active .theme-name {
+            color: var(--accent-cyan);
+        }
+
+        .theme-preview-dark { background: linear-gradient(135deg, #0a0a0f, #1a1a25); }
+        .theme-preview-light { background: linear-gradient(135deg, #fafafa, #e8e8ed); }
+        .theme-preview-ocean { background: linear-gradient(135deg, #0a1628, #152540); }
+        .theme-preview-forest { background: linear-gradient(135deg, #0a1f0a, #143d14); }
+        .theme-preview-sunset { background: linear-gradient(135deg, #1a0a0a, #401818); }
+        .theme-preview-aurora { background: linear-gradient(135deg, #0f0518, #250f35); }
+        .theme-preview-mono { background: linear-gradient(135deg, #000000, #141414); }
+
+        @media (max-width: 768px) {
+            .theme-toggle { width: 48px; height: 48px; bottom: 1.5rem; right: 1.5rem; }
+            .theme-panel { right: 1.5rem; bottom: 4.5rem; min-width: 180px; }
+        }
+nav { padding: 1rem 1.5rem; }
+            .project-header { padding: 6rem 1.5rem 3rem; }
+            .content { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html#projects" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            返回作品
+        </a>
+        <div class="logo">zlinks.cc</div>
+        <div></div>
+    </nav>
+
+    <header class="project-header">
+        <div class="project-hero">
+            <div class="project-icon">🤖</div>
+            <h1 class="project-title">Dify</h1>
+            <p class="project-tagline">开源LLM应用开发平台，支持RAG Pipeline、Agent、Workflow等高级功能。</p>
+            <div class="project-tags">
+                <span class="tag primary">LLM</span>
+                <span class="tag primary">RAG</span>
+                <span class="tag">Agent</span>
+                <span class="tag">开源</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="section">
+            <h2 class="section-title">项目介绍</h2>
+            <div class="section-content">
+                <p>Dify 是一款开源的 LLM 应用开发平台，为企业和开发者提供构建生产级 AI 应用的完整基础设施。平台支持 RAG、Agent、Workflow 等高级功能，是私有化部署 LLM 应用的理想选择。</p>
+                <p>项目基于 Dify 开源框架进行深度定制，增加了企业级功能模块，包括用户权限管理、审计日志、多租户隔离等。</p>
+                <p>支持对接 OpenAI、Claude、文心一言、通义千问等多种大模型，可根据业务需求灵活切换。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">核心功能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>📚 RAG知识库</h4>
+                    <p>文档上传、自动切片、向量检索</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🤖 AI Agent</h4>
+                    <p>工具调用、多轮对话、任务执行</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚡ Workflow编排</h4>
+                    <p>可视化流程设计，复杂业务逻辑</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔌 多模型支持</h4>
+                    <p>OpenAI、Claude、Azure等10+模型</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🏢 企业级功能</h4>
+                    <p>SSO、审计日志、权限管理</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔒 私有化部署</h4>
+                    <p>Docker一键部署，数据完全可控</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">技术架构</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h4>Backend</h4>
+                    <ul class="tech-list">
+                        <li>Python</li>
+                        <li>Flask</li>
+                        <li>Celery</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Frontend</h4>
+                    <ul class="tech-list">
+                        <li>React</li>
+                        <li>TypeScript</li>
+                        <li>Ant Design</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>AI/ML</h4>
+                    <ul class="tech-list">
+                        <li>LangChain</li>
+                        <li>Transformers</li>
+                        <li>Vector DB</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Database</h4>
+                    <ul class="tech-list">
+                        <li>PostgreSQL</li>
+                        <li>Redis</li>
+                        <li>Weaviate</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">应用场景</h2>
+            <div class="section-content">
+                <p><strong>跨国商务会议：</strong>支持多方实时语音翻译，参会者可以使用母语发言，系统自动翻译给其他与会者。</p>
+                <p><strong>国际展会/论坛：</strong>配合蓝牙耳机使用，观众可实时收听演讲的同声传译版本。</p>
+                <p><strong>旅游导览服务：</strong>导游使用设备讲解，游客手机端实时接收翻译后的语音或文字。</p>
+                <p><strong>在线教育：</strong>外教课程实时翻译，帮助学生更好地理解教学内容。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">项目链接</h2>
+            <div class="links">
+                <a href="#" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                    </svg>
+                    在线演示
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/yuzebin" target="_blank" title="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+            <a href="mailto:hello@zlinks.cc" title="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            </a>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.875rem;">© 2026 Zebin Yu. All rights reserved.</p>
+    
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+    </button>
+
+    <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">选择主题</div>
+        <div class="theme-options">
+            <button class="theme-option active" data-theme="dark">
+                <div class="theme-preview theme-preview-dark"></div>
+                <span class="theme-name">暗夜</span>
+            </button>
+            <button class="theme-option" data-theme="light">
+                <div class="theme-preview theme-preview-light"></div>
+                <span class="theme-name">白昼</span>
+            </button>
+            <button class="theme-option" data-theme="ocean">
+                <div class="theme-preview theme-preview-ocean"></div>
+                <span class="theme-name">深海</span>
+            </button>
+            <button class="theme-option" data-theme="forest">
+                <div class="theme-preview theme-preview-forest"></div>
+                <span class="theme-name">森林</span>
+            </button>
+            <button class="theme-option" data-theme="sunset">
+                <div class="theme-preview theme-preview-sunset"></div>
+                <span class="theme-name">日落</span>
+            </button>
+            <button class="theme-option" data-theme="aurora">
+                <div class="theme-preview theme-preview-aurora"></div>
+                <span class="theme-name">极光</span>
+            </button>
+            <button class="theme-option" data-theme="mono">
+                <div class="theme-preview theme-preview-mono"></div>
+                <span class="theme-name">黑白</span>
+            </button>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

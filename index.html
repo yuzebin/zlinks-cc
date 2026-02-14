@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zebin Yu | Full Stack Developer & AI Solutions Architect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Sans+Arabic:wght@300;400;500;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Default Dark Theme */
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-tertiary: #1a1a25;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #b829f7;
+            --accent-pink: #ff006e;
+            --accent-orange: #fb5607;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --text-muted: #606070;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --gradient-hero: linear-gradient(135deg, #00f0ff 0%, #b829f7 50%, #ff006e 100%);
+            --gradient-subtle: linear-gradient(180deg, rgba(0, 240, 255, 0.03) 0%, transparent 100%);
+        }
+
+        /* Light Theme */
+        [data-theme="light"] {
+            --bg-primary: #fafafa;
+            --bg-secondary: #f0f0f5;
+            --bg-tertiary: #e8e8ed;
+            --accent-cyan: #0066cc;
+            --accent-purple: #7c3aed;
+            --accent-pink: #db2777;
+            --accent-orange: #ea580c;
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a5c;
+            --text-muted: #8a8a9a;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --gradient-hero: linear-gradient(135deg, #0066cc 0%, #7c3aed 50%, #db2777 100%);
+            --gradient-subtle: linear-gradient(180deg, rgba(0, 102, 204, 0.05) 0%, transparent 100%);
+        }
+
+        /* Ocean Theme (Blue/Cyan) */
+        [data-theme="ocean"] {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1d33;
+            --bg-tertiary: #152540;
+            --accent-cyan: #00d4ff;
+            --accent-purple: #0099ff;
+            --accent-pink: #00b4d8;
+            --accent-orange: #48cae4;
+            --text-primary: #caf0f8;
+            --text-secondary: #90e0ef;
+            --text-muted: #48cae4;
+            --border-color: rgba(0, 212, 255, 0.15);
+            --gradient-hero: linear-gradient(135deg, #00d4ff 0%, #0099ff 50%, #0077b6 100%);
+            --gradient-subtle: linear-gradient(180deg, rgba(0, 212, 255, 0.05) 0%, transparent 100%);
+        }
+
+        /* Forest Theme (Green) */
+        [data-theme="forest"] {
+            --bg-primary: #0a1f0a;
+            --bg-secondary: #0f2f0f;
+            --bg-tertiary: #143d14;
+            --accent-cyan: #4ade80;
+            --accent-purple: #22c55e;
+            --accent-pink: #16a34a;
+            --accent-orange: #84cc16;
+            --text-primary: #dcfce7;
+            --text-secondary: #86efac;
+            --text-muted: #4ade80;
+            --border-color: rgba(74, 222, 128, 0.15);
+            --gradient-hero: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+            --gradient-subtle: linear-gradient(180deg, rgba(74, 222, 128, 0.05) 0%, transparent 100%);
+        }
+
+        /* Sunset Theme (Orange/Red) */
+        [data-theme="sunset"] {
+            --bg-primary: #1a0a0a;
+            --bg-secondary: #2d1212;
+            --bg-tertiary: #401818;
+            --accent-cyan: #fb923c;
+            --accent-purple: #f97316;
+            --accent-pink: #ef4444;
+            --accent-orange: #dc2626;
+            --text-primary: #ffedd5;
+            --text-secondary: #fdba74;
+            --text-muted: #fb923c;
+            --border-color: rgba(251, 146, 60, 0.15);
+            --gradient-hero: linear-gradient(135deg, #fb923c 0%, #f97316 50%, #ef4444 100%);
+            --gradient-subtle: linear-gradient(180deg, rgba(251, 146, 60, 0.05) 0%, transparent 100%);
+        }
+
+        /* Aurora Theme (Purple/Pink) */
+        [data-theme="aurora"] {
+            --bg-primary: #0f0518;
+            --bg-secondary: #1a0a25;
+            --bg-tertiary: #250f35;
+            --accent-cyan: #e879f9;
+            --accent-purple: #d946ef;
+            --accent-pink: #a855f7;
+            --accent-orange: #8b5cf6;
+            --text-primary: #fae8ff;
+            --text-secondary: #e9d5ff;
+            --text-muted: #c084fc;
+            --border-color: rgba(232, 121, 249, 0.15);
+            --gradient-hero: linear-gradient(135deg, #e879f9 0%, #d946ef 50%, #a855f7 100%);
+            --gradient-subtle: linear-gradient(180deg, rgba(232, 121, 249, 0.05) 0%, transparent 100%);
+        }
+
+        /* Monochrome Theme */
+        [data-theme="mono"] {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #141414;
+            --accent-cyan: #ffffff;
+            --accent-purple: #b0b0b0;
+            --accent-pink: #808080;
+            --accent-orange: #505050;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #505050;
+            --border-color: rgba(255, 255, 255, 0.15);
+            --gradient-hero: linear-gradient(135deg, #ffffff 0%, #a0a0a0 50%, #606060 100%);
+            --gradient-subtle: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Noto Sans JP', 'Noto Sans Arabic', 'Space Grotesk', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body[lang="ar"] {
+            direction: rtl;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-cyan);
+        }
+
+        /* Language Switcher - Dropdown */
+        .lang-switcher {
+            position: relative;
+        }
+
+        .lang-dropdown {
+            position: relative;
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 100px;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            background: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+        }
+
+        .lang-toggle svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-dropdown.open .lang-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            min-width: 140px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        body[lang="ar"] .lang-menu {
+            right: 0;
+            left: auto;
+        }
+
+        .lang-dropdown.open .lang-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        body[lang="ar"] .lang-option {
+            text-align: right;
+        }
+
+        .lang-option:hover {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .lang-option.active {
+            background: rgba(0, 240, 255, 0.15);
+            color: var(--accent-cyan);
+        }
+
+        @media (max-width: 768px) {
+            .lang-menu {
+                min-width: 120px;
+            }
+            .lang-option {
+                padding: 0.375rem 0.5rem;
+                font-size: 0.6875rem;
+            }
+            .lang-toggle {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.6875rem;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        body[lang="ar"] nav {
+            direction: rtl;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            justify-content: flex-start;
+        }
+
+        body[lang="ar"] .nav-links {
+            justify-content: flex-start;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            justify-self: center;
+        }
+
+        .lang-switcher {
+            justify-self: end;
+        }
+
+        body[lang="ar"] .lang-switcher {
+            justify-self: start;
+        }
+
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-hero);
+            transition: width 0.3s ease;
+        }
+
+        body[lang="ar"] .nav-links a::after {
+            left: auto;
+            right: 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 8rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-cyan);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-purple);
+            top: 50%;
+            right: 10%;
+            animation-delay: -3s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-pink);
+            bottom: 10%;
+            left: 30%;
+            animation-delay: -6s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        body[lang="ar"] .hero-content {
+            direction: rtl;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 100px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero h1 .name {
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        body[lang="ar"] .hero-stats {
+            flex-direction: row-reverse;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        body[lang="ar"] .section-header {
+            direction: rtl;
+        }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body[lang="ar"] .project-card {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-hero);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        body[lang="ar"] .project-card::before {
+            transform-origin: right;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        body[lang="ar"] .project-icon {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .project-card:nth-child(2) .project-icon {
+            background: rgba(184, 41, 247, 0.1);
+            border-color: rgba(184, 41, 247, 0.2);
+        }
+
+        .project-card:nth-child(3) .project-icon {
+            background: rgba(255, 0, 110, 0.1);
+            border-color: rgba(255, 0, 110, 0.2);
+        }
+
+        .project-card:nth-child(4) .project-icon {
+            background: rgba(251, 86, 7, 0.1);
+            border-color: rgba(251, 86, 7, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        body[lang="ar"] .project-tags {
+            flex-direction: row-reverse;
+        }
+
+        .project-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.375rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 100px;
+            color: var(--text-secondary);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--gradient-subtle);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        body[lang="ar"] .service-card {
+            direction: rtl;
+            text-align: right;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 1px;
+            background: var(--gradient-hero);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            background: var(--bg-secondary);
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+        }
+
+        body[lang="ar"] .service-number {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            margin-top: 1.5rem;
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        body[lang="ar"] .service-features li {
+            flex-direction: row-reverse;
+        }
+
+        .service-features li::before {
+            content: '→';
+            color: var(--accent-cyan);
+        }
+
+        body[lang="ar"] .service-features li::before {
+            content: '←';
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--bg-secondary);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body[lang="ar"] .cta {
+            direction: rtl;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: var(--gradient-hero);
+            opacity: 0.05;
+            filter: blur(100px);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--gradient-hero);
+            color: var(--bg-primary);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        body[lang="ar"] .cta-button {
+            flex-direction: row-reverse;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-primary);
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        body[lang="ar"] footer {
+            direction: rtl;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body[lang="ar"] .theme-toggle {
+            right: auto;
+            left: 2rem;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 6px 30px rgba(0, 240, 255, 0.2);
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent-cyan);
+        }
+
+        /* Theme Panel */
+        .theme-panel {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            z-index: 1000;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1rem;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        body[lang="ar"] .theme-panel {
+            right: auto;
+            left: 2rem;
+        }
+
+        .theme-panel.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .theme-panel-title {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .theme-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            background: transparent;
+            width: 100%;
+            text-align: left;
+        }
+
+        body[lang="ar"] .theme-option {
+            text-align: right;
+            flex-direction: row-reverse;
+        }
+
+        .theme-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .theme-option.active {
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        .theme-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .theme-name {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .theme-option.active .theme-name {
+            color: var(--accent-cyan);
+        }
+
+        /* Theme preview gradients */
+        .theme-preview-dark { background: linear-gradient(135deg, #0a0a0f, #1a1a25); }
+        .theme-preview-light { background: linear-gradient(135deg, #fafafa, #e8e8ed); }
+        .theme-preview-ocean { background: linear-gradient(135deg, #0a1628, #152540); }
+        .theme-preview-forest { background: linear-gradient(135deg, #0a1f0a, #143d14); }
+        .theme-preview-sunset { background: linear-gradient(135deg, #1a0a0a, #401818); }
+        .theme-preview-aurora { background: linear-gradient(135deg, #0f0518, #250f35); }
+        .theme-preview-mono { background: linear-gradient(135deg, #000000, #141414); }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                width: 48px;
+                height: 48px;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+            body[lang="ar"] .theme-toggle {
+                right: auto;
+                left: 1.5rem;
+            }
+            .theme-panel {
+                right: 1.5rem;
+                bottom: 4.5rem;
+                min-width: 180px;
+            }
+            body[lang="ar"] .theme-panel {
+                right: auto;
+                left: 1.5rem;
+            }
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: var(--gradient-hero);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        body[lang="ar"] .footer-links {
+            flex-direction: row-reverse;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .footer-links a svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+                grid-template-columns: 1fr auto;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                justify-self: start;
+            }
+
+            .lang-switcher {
+                justify-self: end;
+            }
+
+            body[lang="ar"] .logo,
+            body[lang="ar"] .lang-switcher {
+                justify-self: inherit;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .projects-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        body[lang="ar"] .reveal {
+            transform: translateY(30px);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        .project-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card-link .project-card {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body lang="zh">
+    <!-- Navigation -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#about" data-i18n="nav.about">关于</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">作品</a></li>
+            <li><a href="#services" data-i18n="nav.services">服务</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">联系</a></li>
+        </ul>
+        <div class="logo">zlinks.cc</div>
+        <div class="lang-switcher">
+            <div class="lang-dropdown" id="langDropdown">
+                <button class="lang-toggle" id="langToggle">
+                    <span id="currentLang">中文</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9l6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="lang-menu">
+                    <button class="lang-option" data-lang="zh">中文</button>
+                    <button class="lang-option" data-lang="en">English</button>
+                    <button class="lang-option" data-lang="es">Español</button>
+                    <button class="lang-option" data-lang="ar">العربية</button>
+                    <button class="lang-option" data-lang="ru">Русский</button>
+                    <button class="lang-option" data-lang="ja">日本語</button>
+                    <button class="lang-option" data-lang="fr">Français</button>
+                    <button class="lang-option" data-lang="de">Deutsch</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge" data-i18n="hero.badge">Available for Projects</div>
+            <h1><span class="name">Zebin Yu</span></h1>
+            <p class="hero-title" data-i18n="hero.title">全栈开发者 / AI解决方案架构师</p>
+            <p class="hero-description" data-i18n="hero.description">
+                十年以上全栈开发经验，专注AI应用落地。擅长将前沿AI技术转化为实用产品，从语音识别到图像生成，从实时通信到电商系统，让每个创意都有实现的可能。
+            </p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">10+</div>
+                    <div class="stat-label" data-i18n="stats.years">年开发经验</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label" data-i18n="stats.projects">完成项目</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label" data-i18n="stats.innovation">创新可能</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-header reveal">
+            <div class="section-label" data-i18n="projects.label">Selected Works</div>
+            <h2 class="section-title" data-i18n="projects.title">主要作品</h2>
+            <p class="section-subtitle" data-i18n="projects.subtitle">从实时翻译到AI教育，每个项目都是技术与创意的融合</p>
+        </div>
+
+        <div class="projects-grid">
+            <a href="projects/wetalk.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🎙️</div>
+                <h3 class="project-title">weLinks Talk</h3>
+                <p class="project-description" data-i18n="projects.wetalk.desc">
+                    实时语音翻译系统，支持50+语言即时互译。基于WebRTC实现低延迟通信，集成SenseVoice ASR语音识别引擎，支持蓝牙设备连接，打破语言障碍。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">WebRTC</span>
+                    <span class="project-tag">FastAPI</span>
+                    <span class="project-tag">React</span>
+                    <span class="project-tag">SenseVoice</span>
+                </div>
+            </div></a>
+
+            <a href="projects/vr-english.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🎓</div>
+                <h3 class="project-title">VR English</h3>
+                <p class="project-description" data-i18n="projects.vr.desc">
+                    VR英语学习平台，通过AI虚拟角色提供沉浸式对话练习。多场景模拟（咖啡厅、酒店、办公室），四种学习模式满足不同需求。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Zhipu AI</span>
+                    <span class="project-tag">Zustand</span>
+                    <span class="project-tag">TypeScript</span>
+                    <span class="project-tag">WebSocket</span>
+                </div>
+            </div></a>
+
+            <div class="project-card reveal">
+                <div class="project-icon">🎨</div>
+                <h3 class="project-title" data-i18n="projects.comfy.title">ComfyUI/SwarmUI集成方案</h3>
+                <p class="project-description" data-i18n="projects.comfy.desc">
+                    企业级AI图像生成工作流自动化方案。支持模型管理与版本控制，私有化部署架构，为创意团队提供稳定高效的AI绘画基础设施。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">ComfyUI</span>
+                    <span class="project-tag">SwarmUI</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Docker</span>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-icon">🛒</div>
+                <h3 class="project-title" data-i18n="projects.ecom.title">智慧电商系统</h3>
+                <p class="project-description" data-i18n="projects.ecom.desc">
+                    全链路电商解决方案，包含预售订单管理、微信生态深度集成、售后自动化流程。支撑高并发交易场景，服务数十万用户。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Java</span>
+                    <span class="project-tag">Spring Boot</span>
+                    <span class="project-tag">微服务</span>
+                    <span class="project-tag">微信支付</span>
+                </div>
+            </div>
+
+            <a href="projects/irank.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">📊</div>
+                <h3 class="project-title">iRank</h3>
+                <p class="project-description" data-i18n="projects.irank.desc">
+                    命令行工具获取苹果商店App排行数据。支持多国家/地区、多分类排行查询，30+ Stars开源项目，开发者首选的App Store数据分析工具。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Shell</span>
+                    <span class="project-tag">App Store</span>
+                    <span class="project-tag">CLI</span>
+                    <span class="project-tag">⭐ 30</span>
+                </div>
+            </div></a>
+
+            <a href="projects/appsniff.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🔍</div>
+                <h3 class="project-title">AppSniff</h3>
+                <p class="project-description" data-i18n="projects.appsniff.desc">
+                    苹果商店模拟购买下载工具。逆向工程解析App Store协议，支持IPA文件提取与分析，安全研究人员和开发者的逆向利器。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Reverse Engineering</span>
+                    <span class="project-tag">iOS</span>
+                    <span class="project-tag">⭐ 18</span>
+                </div>
+            </div></a>
+
+            <a href="projects/awesome-saas.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🚀</div>
+                <h3 class="project-title">Awesome Startup SaaS Tools</h3>
+                <p class="project-description" data-i18n="projects.awesome.desc">
+                    精心整理的创业SaaS工具合集。收录各领域的优质开源工具和服务，帮助创业者快速找到合适的技术栈，加速产品上线。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">SaaS</span>
+                    <span class="project-tag">Startup</span>
+                    <span class="project-tag">Tools</span>
+                    <span class="project-tag">⭐ 13</span>
+                </div>
+            </div></a>
+
+            <a href="projects/fastelm.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🍔</div>
+                <h3 class="project-title">Fast Elm</h3>
+                <p class="project-description" data-i18n="projects.fastelm.desc">
+                    饿了么前端克隆项目。基于Vue.js构建的完整外卖平台前端，包含商家展示、购物车、订单系统等核心功能模块。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Vue.js</span>
+                    <span class="project-tag">Frontend</span>
+                    <span class="project-tag">E-commerce</span>
+                    <span class="project-tag">Mobile</span>
+                </div>
+            </div></a>
+
+            <a href="projects/onnxguard.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🛡️</div>
+                <h3 class="project-title">ONNXGuard</h3>
+                <p class="project-description" data-i18n="projects.onnxguard.desc">
+                    ONNX模型安全检测工具。使用Rust编写的高性能模型验证工具，检测恶意模型文件，保护AI推理环境安全。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Rust</span>
+                    <span class="project-tag">ONNX</span>
+                    <span class="project-tag">AI Security</span>
+                    <span class="project-tag">ML</span>
+                </div>
+            </div></a>
+
+            <a href="projects/dify.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🤖</div>
+                <h3 class="project-title">Dify LLM平台</h3>
+                <p class="project-description" data-i18n="projects.dify.desc">
+                    开源LLM应用开发平台，支持RAG Pipeline、Agent、Workflow等高级功能。私有化部署，支持多种大模型接入，企业级AI应用基础设施。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">LLM</span>
+                    <span class="project-tag">RAG</span>
+                    <span class="project-tag">Docker</span>
+                </div>
+            </div></a>
+
+            <a href="projects/ragflow.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">📚</div>
+                <h3 class="project-title">RAGFlow文档引擎</h3>
+                <p class="project-description" data-i18n="projects.ragflow.desc">
+                    基于深度文档理解的RAG引擎，支持复杂格式数据处理。智能文档解析、向量化检索、大模型生成一体化解决方案。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">RAG</span>
+                    <span class="project-tag">NLP</span>
+                    <span class="project-tag">Vector DB</span>
+                </div>
+            </div></a>
+
+            <a href="projects/medical-ai.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🏥</div>
+                <h3 class="project-title">医疗AI质控系统</h3>
+                <p class="project-description" data-i18n="projects.medical.desc">
+                    基于多模态决策融合的医疗质控系统，整合规则引擎、知识图谱、RAG和大模型技术，实现病案首页质控、病历一致性校验等核心功能。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Java</span>
+                    <span class="project-tag">Neo4j</span>
+                    <span class="project-tag">LLM</span>
+                    <span class="project-tag">Healthcare</span>
+                </div>
+            </div></a>
+
+            <a href="projects/comfyui-platform.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🎨</div>
+                <h3 class="project-title">ComfyUI图像平台</h3>
+                <p class="project-description" data-i18n="projects.comfyui.desc">
+                    企业级AI图像生成平台，基于ComfyUI和Stable Diffusion。支持工作流编排、模型管理、批量生成，为设计团队提供高效AI绘画能力。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">ComfyUI</span>
+                    <span class="project-tag">SD</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">GPU</span>
+                </div>
+            </div></a>
+
+            <a href="projects/tts-service.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🔊</div>
+                <h3 class="project-title">爱声TTS服务</h3>
+                <p class="project-description" data-i18n="projects.tts.desc">
+                    多音色语音合成服务，基于MeloTTS和CosyVoice。支持中英日等多种语言、多种情感风格，提供高质量实时语音合成API。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">TTS</span>
+                    <span class="project-tag">ONNX</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Audio</span>
+                </div>
+            </div></a>
+
+            <a href="projects/contract-system.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">📄</div>
+                <h3 class="project-title">智能合同系统</h3>
+                <p class="project-description" data-i18n="projects.contract.desc">
+                    企业合同管理系统，集成AI风险分析和智能审查。支持合同模板、审批流程、履约跟踪，降低企业法律风险。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Java</span>
+                    <span class="project-tag">Vue</span>
+                    <span class="project-tag">Microservices</span>
+                    <span class="project-tag">AI</span>
+                </div>
+            </div></a>
+
+            <a href="projects/code-audit.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🔐</div>
+                <h3 class="project-title">代码安全审计</h3>
+                <p class="project-description" data-i18n="projects.audit.desc">
+                    静态代码分析解决方案，支持MISRA、ISO 26262、AUTOSAR等国际标准。自动化代码审查，提升软件安全性和合规性。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Static Analysis</span>
+                    <span class="project-tag">Security</span>
+                    <span class="project-tag">Compliance</span>
+                    <span class="project-tag">C/C++</span>
+                </div>
+            </div></a>
+
+            <a href="projects/aigc-platform.html" class="project-card-link"><div class="project-card reveal">
+                <div class="project-icon">🎬</div>
+                <h3 class="project-title">AIGC内容生成</h3>
+                <p class="project-description" data-i18n="projects.aigc.desc">
+                    多模态AI内容生成平台，涵盖文本、图像、音频、视频。支持科幻短片、音乐MV、动画制作等创意内容生产。
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">AIGC</span>
+                    <span class="project-tag">Video</span>
+                    <span class="project-tag">Music</span>
+                    <span class="project-tag">Creative</span>
+                </div>
+            </div></a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <div class="section-label" data-i18n="services.label">What I Offer</div>
+            <h2 class="section-title" data-i18n="services.title">提供服务</h2>
+            <p class="section-subtitle" data-i18n="services.subtitle">基于18+项目实践经验，提供全栈技术与AI解决方案</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-number">01</div>
+                <h3 class="service-title" data-i18n="services.llm.title">LLM应用开发</h3>
+                <p class="service-description" data-i18n="services.llm.desc">
+                    基于大语言模型的智能应用开发，涵盖RAG知识库、AI Agent、工作流编排等企业级解决方案。
+                </p>
+                <ul class="service-features">
+                    <li data-i18n="services.llm.f1">RAG知识库系统</li>
+                    <li data-i18n="services.llm.f2">AI Agent开发</li>
+                    <li data-i18n="services.llm.f3">LLM Workflow编排</li>
+                    <li data-i18n="services.llm.f4">私有化LLM部署</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-number">02</div>
+                <h3 class="service-title" data-i18n="services.genai.title">生成式AI</h3>
+                <p class="service-description" data-i18n="services.genai.desc">
+                    AIGC内容生成解决方案，包括AI图像生成、语音合成、多模态内容创作平台搭建。
+                </p>
+                <ul class="service-features">
+                    <li data-i18n="services.genai.f1">AI图像生成平台</li>
+                    <li data-i18n="services.genai.f2">语音合成TTS服务</li>
+                    <li data-i18n="services.genai.f3">多模态内容生成</li>
+                    <li data-i18n="services.genai.f4">ComfyUI工作流定制</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-number">03</div>
+                <h3 class="service-title" data-i18n="services.enterprise.title">企业级开发</h3>
+                <p class="service-description" data-i18n="services.enterprise.desc">
+                    全栈企业应用开发，专注电商系统、SaaS平台、业务中台等高并发、高可用架构设计。
+                </p>
+                <ul class="service-features">
+                    <li data-i18n="services.enterprise.f1">电商/供应链系统</li>
+                    <li data-i18n="services.enterprise.f2">SaaS平台架构</li>
+                    <li data-i18n="services.enterprise.f3">微服务/DevOps</li>
+                    <li data-i18n="services.enterprise.f4">微信生态集成</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-number">04</div>
+                <h3 class="service-title" data-i18n="services.security.title">安全与合规</h3>
+                <p class="service-description" data-i18n="services.security.desc">
+                    软件安全与合规解决方案，提供代码审计、模型安全检测、行业标准合规咨询服务。
+                </p>
+                <ul class="service-features">
+                    <li data-i18n="services.security.f1">静态代码分析</li>
+                    <li data-i18n="services.security.f2">AI模型安全检测</li>
+                    <li data-i18n="services.security.f3">MISRA/ISO 26262合规</li>
+                    <li data-i18n="services.security.f4">安全审计咨询</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-number">05</div>
+                <h3 class="service-title" data-i18n="services.mobile.title">iOS/移动开发</h3>
+                <p class="service-description" data-i18n="services.mobile.desc">
+                    iOS应用开发与逆向工程，App Store数据分析工具、企业级移动应用解决方案。
+                </p>
+                <ul class="service-features">
+                    <li data-i18n="services.mobile.f1">iOS应用开发</li>
+                    <li data-i18n="services.mobile.f2">逆向工程分析</li>
+                    <li data-i18n="services.mobile.f3">App Store数据工具</li>
+                    <li data-i18n="services.mobile.f4">协议分析/安全研究</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-number">06</div>
+                <h3 class="service-title" data-i18n="services.rtc.title">实时通信</h3>
+                <p class="service-description" data-i18n="services.rtc.desc">
+                    WebRTC实时通信系统开发，支持音视频通话、实时翻译、低延迟数据传输等场景。
+                </p>
+                <ul class="service-features">
+                    <li data-i18n="services.rtc.f1">WebRTC音视频系统</li>
+                    <li data-i18n="services.rtc.f2">实时语音翻译</li>
+                    <li data-i18n="services.rtc.f3">低延迟直播方案</li>
+                    <li data-i18n="services.rtc.f4">蓝牙设备集成</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal">
+                <div class="service-number">07</div>
+                <h3 class="service-title" data-i18n="services.agent.title">AI Agent 协作师</h3>
+                <p class="service-description" data-i18n="services.agent.desc">
+                    基于OpenClaw等框架的自主AI Agent开发与编排，实现多Agent协作、持久化记忆、24/7自动化任务执行。
+                </p>
+                <ul class="service-features">
+                    <li data-i18n="services.agent.f1">OpenClaw自主Agent平台</li>
+                    <li data-i18n="services.agent.f2">多Agent协作编排</li>
+                    <li data-i18n="services.agent.f3">持久化记忆系统</li>
+                    <li data-i18n="services.agent.f4">24/7自动化任务执行</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="cta-content reveal">
+            <h2 data-i18n="cta.title">有项目想法？</h2>
+            <p data-i18n="cta.desc">无论是全新产品的从零搭建，还是现有系统的AI化升级，让我们一起探讨如何让技术创造价值。</p>
+            <a href="mailto:hello@zlinks.cc" class="cta-button">
+                <span data-i18n="cta.button">开始对话</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">zlinks.cc</div>
+            <p class="footer-text" data-i18n="footer.slogan">用代码连接创意，用技术实现想象</p>
+            <div class="footer-links">
+                <a href="https://github.com/yuzebin" target="_blank" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="mailto:hello@zlinks.cc" title="Email">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </a>
+                <a href="https://etherscan.io/address/0x566251051FCBa26720a4bc97bCbAA67B8179731F" target="_blank" title="ETH: 0x5662...9731F">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 17.97L4.58 13.62 11.943 24l7.37-10.38-7.372 4.35h.003zM12.056 0L4.69 12.223l7.365 4.354 7.365-4.35L12.056 0z"/></svg>
+                </a>
+                <a href="#about" title="返回顶部" data-i18n-title="footer.top">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+                </a>
+            </div>
+            <p class="footer-text" style="margin-top: 2rem;">© 2026 Zebin Yu. <span data-i18n="footer.rights">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+    </button>
+
+    <div class="theme-panel" id="themePanel">
+        <div class="theme-panel-title">选择主题</div>
+        <div class="theme-options">
+            <button class="theme-option active" data-theme="dark">
+                <div class="theme-preview theme-preview-dark"></div>
+                <span class="theme-name">暗夜 (默认)</span>
+            </button>
+            <button class="theme-option" data-theme="light">
+                <div class="theme-preview theme-preview-light"></div>
+                <span class="theme-name">白昼</span>
+            </button>
+            <button class="theme-option" data-theme="ocean">
+                <div class="theme-preview theme-preview-ocean"></div>
+                <span class="theme-name">深海</span>
+            </button>
+            <button class="theme-option" data-theme="forest">
+                <div class="theme-preview theme-preview-forest"></div>
+                <span class="theme-name">森林</span>
+            </button>
+            <button class="theme-option" data-theme="sunset">
+                <div class="theme-preview theme-preview-sunset"></div>
+                <span class="theme-name">日落</span>
+            </button>
+            <button class="theme-option" data-theme="aurora">
+                <div class="theme-preview theme-preview-aurora"></div>
+                <span class="theme-name">极光</span>
+            </button>
+            <button class="theme-option" data-theme="mono">
+                <div class="theme-preview theme-preview-mono"></div>
+                <span class="theme-name">黑白</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Translation data
+        const translations = {
+            zh: {
+                nav: { about: '关于', projects: '作品', services: '服务', contact: '联系' },
+                hero: {
+                    badge: 'Available for Projects',
+                    title: '全栈开发者 / AI解决方案架构师',
+                    description: '从LLM应用开发到生成式AI，从实时通信到企业级系统，专注于将前沿AI技术落地为可扩展的产品方案。已交付18+项目，涵盖RAG知识库、AI图像生成、语音合成、医疗AI、代码安全等领域，擅长私有化部署与高性能架构设计。'
+                },
+                stats: { years: '年开发经验', projects: '完成项目', innovation: '创新可能' },
+                projects: {
+                    label: 'Selected Works',
+                    title: '主要作品',
+                    subtitle: '从实时翻译到AI教育，每个项目都是技术与创意的融合',
+                    wetalk: { desc: '实时语音翻译系统，支持50+语言即时互译。基于WebRTC实现低延迟通信，集成SenseVoice ASR语音识别引擎，支持蓝牙设备连接，打破语言障碍。' },
+                    vr: { desc: 'VR英语学习平台，通过AI虚拟角色提供沉浸式对话练习。多场景模拟（咖啡厅、酒店、办公室），四种学习模式满足不同需求。' },
+                    comfy: { title: 'ComfyUI/SwarmUI集成方案', desc: '企业级AI图像生成工作流自动化方案。支持模型管理与版本控制，私有化部署架构，为创意团队提供稳定高效的AI绘画基础设施。' },
+                    ecom: { title: '智慧电商系统', desc: '全链路电商解决方案，包含预售订单管理、微信生态深度集成、售后自动化流程。支撑高并发交易场景，服务数十万用户。' },
+                    irank: { desc: '命令行工具获取苹果商店App排行数据。支持多国家/地区、多分类排行查询，30+ Stars开源项目，开发者首选的App Store数据分析工具。' },
+                    appsniff: { desc: '苹果商店模拟购买下载工具。逆向工程解析App Store协议，支持IPA文件提取与分析，安全研究人员和开发者的逆向利器。' },
+                    awesome: { desc: '精心整理的创业SaaS工具合集。收录各领域的优质开源工具和服务，帮助创业者快速找到合适的技术栈，加速产品上线。' },
+                    fastelm: { desc: '饿了么前端克隆项目。基于Vue.js构建的完整外卖平台前端，包含商家展示、购物车、订单系统等核心功能模块。' },
+                    onnxguard: { desc: 'ONNX模型安全检测工具。使用Rust编写的高性能模型验证工具，检测恶意模型文件，保护AI推理环境安全。' },
+                    dify: { desc: '开源LLM应用开发平台，支持RAG Pipeline、Agent、Workflow等高级功能。私有化部署，支持多种大模型接入，企业级AI应用基础设施。' },
+                    ragflow: { desc: '基于深度文档理解的RAG引擎，支持复杂格式数据处理。智能文档解析、向量化检索、大模型生成一体化解决方案。' },
+                    medical: { desc: '基于多模态决策融合的医疗质控系统，整合规则引擎、知识图谱、RAG和大模型技术，实现病案首页质控、病历一致性校验等核心功能。' },
+                    comfyui: { desc: '企业级AI图像生成平台，基于ComfyUI和Stable Diffusion。支持工作流编排、模型管理、批量生成，为设计团队提供高效AI绘画能力。' },
+                    tts: { desc: '多音色语音合成服务，基于MeloTTS和CosyVoice。支持中英日等多种语言、多种情感风格，提供高质量实时语音合成API。' },
+                    contract: { desc: '企业合同管理系统，集成AI风险分析和智能审查。支持合同模板、审批流程、履约跟踪，降低企业法律风险。' },
+                    audit: { desc: '静态代码分析解决方案，支持MISRA、ISO 26262、AUTOSAR等国际标准。自动化代码审查，提升软件安全性和合规性。' },
+                    aigc: { desc: '多模态AI内容生成平台，涵盖文本、图像、音频、视频。支持科幻短片、音乐MV、动画制作等创意内容生产。' }
+                },
+                services: {
+                    label: 'What I Offer',
+                    title: '提供服务',
+                    subtitle: '基于18+项目实践经验，提供全栈技术与AI解决方案',
+                    llm: { title: 'LLM应用开发', desc: '基于大语言模型的智能应用开发，涵盖RAG知识库、AI Agent、工作流编排等企业级解决方案。', f1: 'RAG知识库系统', f2: 'AI Agent开发', f3: 'LLM Workflow编排', f4: '私有化LLM部署' },
+                    genai: { title: '生成式AI', desc: 'AIGC内容生成解决方案，包括AI图像生成、语音合成、多模态内容创作平台搭建。', f1: 'AI图像生成平台', f2: '语音合成TTS服务', f3: '多模态内容生成', f4: 'ComfyUI工作流定制' },
+                    enterprise: { title: '企业级开发', desc: '全栈企业应用开发，专注电商系统、SaaS平台、业务中台等高并发、高可用架构设计。', f1: '电商/供应链系统', f2: 'SaaS平台架构', f3: '微服务/DevOps', f4: '微信生态集成' },
+                    security: { title: '安全与合规', desc: '软件安全与合规解决方案，提供代码审计、模型安全检测、行业标准合规咨询服务。', f1: '静态代码分析', f2: 'AI模型安全检测', f3: 'MISRA/ISO 26262合规', f4: '安全审计咨询' },
+                    mobile: { title: 'iOS/移动开发', desc: 'iOS应用开发与逆向工程，App Store数据分析工具、企业级移动应用解决方案。', f1: 'iOS应用开发', f2: '逆向工程分析', f3: 'App Store数据工具', f4: '协议分析/安全研究' },
+                    rtc: { title: '实时通信', desc: 'WebRTC实时通信系统开发，支持音视频通话、实时翻译、低延迟数据传输等场景。', f1: 'WebRTC音视频系统', f2: '实时语音翻译', f3: '低延迟直播方案', f4: '蓝牙设备集成' },
+                    agent: { title: 'AI Agent 协作师', desc: '基于OpenClaw等框架的自主AI Agent开发与编排，实现多Agent协作、持久化记忆、24/7自动化任务执行。', f1: 'OpenClaw自主Agent平台', f2: '多Agent协作编排', f3: '持久化记忆系统', f4: '24/7自动化任务执行' }
+                },
+                cta: { title: '有项目想法？', desc: '无论是全新产品的从零搭建，还是现有系统的AI化升级，让我们一起探讨如何让技术创造价值。', button: '开始对话' },
+                footer: { slogan: '用代码连接创意，用技术实现想象', top: '返回顶部', rights: '版权所有' }
+            },
+            en: {
+                nav: { about: 'About', projects: 'Works', services: 'Services', contact: 'Contact' },
+                hero: {
+                    badge: 'Available for Projects',
+                    title: 'Full Stack Developer / AI Solutions Architect',
+                    description: 'From LLM application development to generative AI, from real-time communication to enterprise systems—specializing in deploying cutting-edge AI technologies into scalable product solutions. Delivered 18+ projects spanning RAG knowledge bases, AI image generation, voice synthesis, medical AI, and code security. Expert in private deployment and high-performance architecture design.'
+                },
+                stats: { years: 'Years Experience', projects: 'Projects Done', innovation: 'Innovation' },
+                projects: {
+                    label: 'Selected Works',
+                    title: 'Featured Projects',
+                    subtitle: 'From real-time translation to AI education, each project blends technology with creativity',
+                    wetalk: { desc: 'Real-time voice translation system supporting 50+ languages. Built on WebRTC for low-latency communication, integrated with SenseVoice ASR engine, with Bluetooth device support—breaking language barriers.' },
+                    vr: { desc: 'VR English learning platform with AI virtual characters for immersive conversation practice. Multi-scenario simulation (café, hotel, office) with four learning modes for different needs.' },
+                    comfy: { title: 'ComfyUI/SwarmUI Solution', desc: 'Enterprise-grade AI image generation workflow automation. Supports model management, version control, and private deployment architecture—providing stable and efficient AI painting infrastructure for creative teams.' },
+                    ecom: { title: 'Smart E-commerce System', desc: 'Full-chain e-commerce solution including pre-sale order management, deep WeChat ecosystem integration, and automated after-sales processes. Supporting high-concurrency scenarios for hundreds of thousands of users.' },
+                    irank: { desc: 'Command-line tool to fetch App Store rankings. Supports multi-country/region and category queries, 30+ Stars open-source project, the preferred tool for App Store data analysis.' },
+                    appsniff: { desc: 'App Store purchase simulation and download tool. Reverse engineering of App Store protocols, supports IPA extraction and analysis, a powerful tool for security researchers and developers.' },
+                    awesome: { desc: 'Curated collection of startup SaaS tools. Compiles quality open-source tools and services across various fields to help entrepreneurs quickly find the right tech stack.' },
+                    fastelm: { desc: 'Ele.me frontend clone project. Complete food delivery platform frontend built with Vue.js, including merchant display, shopping cart, order system, and other core modules.' },
+                    onnxguard: { desc: 'ONNX model security detection tool. High-performance model validation tool written in Rust, detects malicious model files to protect AI inference environments.' },
+                    dify: { desc: 'Open-source LLM application development platform supporting RAG Pipeline, Agent, Workflow and other advanced features. Private deployment with support for multiple large models, enterprise-grade AI application infrastructure.' },
+                    ragflow: { desc: 'Deep document understanding RAG engine supporting complex format data processing. Intelligent document parsing, vectorized retrieval, and large model generation integrated solution.' },
+                    medical: { desc: 'Medical quality control system based on multimodal decision fusion, integrating rule engines, knowledge graphs, RAG and large model technologies to achieve medical record quality control and consistency verification.' },
+                    comfyui: { desc: 'Enterprise-grade AI image generation platform based on ComfyUI and Stable Diffusion. Supports workflow orchestration, model management, batch generation, providing efficient AI painting capabilities for design teams.' },
+                    tts: { desc: 'Multi-voice speech synthesis service based on MeloTTS and CosyVoice. Supports multiple languages including Chinese, English, and Japanese, with various emotional styles, providing high-quality real-time speech synthesis API.' },
+                    contract: { desc: 'Enterprise contract management system with integrated AI risk analysis and intelligent review. Supports contract templates, approval workflows, performance tracking, reducing corporate legal risks.' },
+                    audit: { desc: 'Static code analysis solution supporting international standards such as MISRA, ISO 26262, and AUTOSAR. Automated code review to improve software security and compliance.' },
+                    aigc: { desc: 'Multimodal AI content generation platform covering text, images, audio, and video. Supports creative content production such as sci-fi short films, music MVs, and animation production.' }
+                },
+                services: {
+                    label: 'What I Offer',
+                    title: 'Services',
+                    subtitle: 'Based on 18+ projects experience, providing full-stack technology and AI solutions',
+                    llm: { title: 'LLM Development', desc: 'Intelligent application development based on large language models, covering enterprise solutions such as RAG knowledge base, AI Agent, and workflow orchestration.', f1: 'RAG Knowledge Base', f2: 'AI Agent Development', f3: 'LLM Workflow Orchestration', f4: 'Private LLM Deployment' },
+                    genai: { title: 'Generative AI', desc: 'AIGC content generation solutions, including AI image generation, voice synthesis, and multimodal content creation platform setup.', f1: 'AI Image Generation', f2: 'Voice Synthesis TTS', f3: 'Multimodal Content', f4: 'ComfyUI Workflow' },
+                    enterprise: { title: 'Enterprise Dev', desc: 'Full-stack enterprise application development, focusing on high-concurrency, high-availability architecture design for e-commerce systems, SaaS platforms, and business middle-platforms.', f1: 'E-commerce Systems', f2: 'SaaS Architecture', f3: 'Microservices/DevOps', f4: 'WeChat Ecosystem' },
+                    security: { title: 'Security & Compliance', desc: 'Software security and compliance solutions, providing code auditing, model security detection, and industry standard compliance consulting.', f1: 'Static Code Analysis', f2: 'AI Model Security', f3: 'MISRA/ISO 26262', f4: 'Security Audit' },
+                    mobile: { title: 'iOS/Mobile Dev', desc: 'iOS app development and reverse engineering, App Store data analysis tools, enterprise mobile application solutions.', f1: 'iOS Development', f2: 'Reverse Engineering', f3: 'App Store Analytics', f4: 'Protocol Analysis' },
+                    rtc: { title: 'Real-time Comms', desc: 'WebRTC real-time communication system development, supporting audio/video calls, real-time translation, low-latency data transmission.', f1: 'WebRTC Systems', f2: 'Real-time Translation', f3: 'Low-latency Streaming', f4: 'Bluetooth Integration' },
+                    agent: { title: 'AI Agent Orchestrator', desc: 'Autonomous AI Agent development and orchestration based on OpenClaw and similar frameworks, enabling multi-Agent collaboration, persistent memory, and 24/7 automated task execution.', f1: 'OpenClaw Agent Platform', f2: 'Multi-Agent Orchestration', f3: 'Persistent Memory Systems', f4: '24/7 Automated Execution' }
+                },
+                cta: { title: 'Have a project idea?', desc: 'Whether building a new product from scratch or AI-upgrading existing systems, let\'s explore how technology can create value together.', button: 'Start a Conversation' },
+                footer: { slogan: 'Connecting creativity with code, realizing imagination through technology', top: 'Back to Top', rights: 'All rights reserved' }
+            },
+            es: {
+                nav: { about: 'Sobre', projects: 'Proyectos', services: 'Servicios', contact: 'Contacto' },
+                hero: {
+                    badge: 'Disponible para Proyectos',
+                    title: 'Desarrollador Full Stack / Arquitecto de Soluciones IA',
+                    description: 'Desde el desarrollo de aplicaciones LLM hasta IA generativa, desde comunicación en tiempo real hasta sistemas empresariales—especializado en implementar tecnologías de IA de vanguardia en soluciones de productos escalables. Entregados 18+ proyectos que abarcan bases de conocimiento RAG, generación de imágenes por IA, síntesis de voz, IA médica y seguridad de código. Experto en despliegue privado y diseño de arquitectura de alto rendimiento.'
+                },
+                stats: { years: 'Años de Exp.', projects: 'Proyectos', innovation: 'Innovación' },
+                projects: {
+                    label: 'Trabajos Seleccionados',
+                    title: 'Proyectos Principales',
+                    subtitle: 'De traducción en tiempo real a educación con IA, cada proyecto fusiona tecnología y creatividad',
+                    wetalk: { desc: 'Sistema de traducción de voz en tiempo real que admite más de 50 idiomas. Basado en WebRTC para comunicación de baja latencia, integrado con el motor ASR SenseVoice, con soporte para dispositivos Bluetooth.' },
+                    vr: { desc: 'Plataforma de aprendizaje de inglés en VR con personajes virtuales de IA para práctica de conversación inmersiva. Simulación multi-escenario (cafetería, hotel, oficina) con cuatro modos de aprendizaje.' },
+                    comfy: { title: 'Solución ComfyUI/SwarmUI', desc: 'Automatización de flujo de trabajo de generación de imágenes con IA a nivel empresarial. Admite gestión de modelos, control de versiones y arquitectura de implementación privada.' },
+                    ecom: { title: 'Sistema de E-commerce', desc: 'Solución completa de comercio electrónico que incluye gestión de pedidos de preventa, integración profunda con el ecosistema WeChat y procesos automatizados de posventa.' },
+                    irank: { desc: 'Herramienta de línea de comandos para obtener rankings de App Store. Soporta consultas multi-país/región y categorías, proyecto open-source con 30+ Stars.' },
+                    appsniff: { desc: 'Herramienta de simulación de compras en App Store. Ingeniería inversa de protocolos de App Store, soporta extracción y análisis de IPA.' },
+                    awesome: { desc: 'Colección curada de herramientas SaaS para startups. Compila herramientas open-source de calidad para ayudar a emprendedores a encontrar el stack tecnológico adecuado.' },
+                    fastelm: { desc: 'Clon del frontend de Ele.me. Plataforma completa de entrega de comida construida con Vue.js, incluyendo mostrador de comercios, carrito, sistema de pedidos.' },
+                    onnxguard: { desc: 'Herramienta de detección de seguridad de modelos ONNX. Herramienta de validación de alto rendimiento escrita en Rust, detecta archivos de modelos maliciosos.' },
+                    dify: { desc: 'Plataforma de desarrollo de aplicaciones LLM de código abierto que soporta RAG Pipeline, Agent, Workflow y otras funciones avanzadas. Despliegue privado con soporte para múltiples modelos grandes, infraestructura de aplicaciones IA empresarial.' },
+                    ragflow: { desc: 'Motor RAG basado en comprensión profunda de documentos, soporta procesamiento de datos en formatos complejos. Análisis inteligente de documentos, recuperación vectorial, solución integrada de generación con modelos grandes.' },
+                    medical: { desc: 'Sistema de control de calidad médica basado en fusión de decisiones multimodal, integrando motores de reglas, grafos de conocimiento, RAG y tecnologías de modelos grandes para lograr control de calidad de registros médicos y verificación de consistencia.' },
+                    comfyui: { desc: 'Plataforma de generación de imágenes IA de nivel empresarial basada en ComfyUI y Stable Diffusion. Soporta orquestación de flujos de trabajo, gestión de modelos, generación por lotes, proporcionando capacidades eficientes de pintura IA para equipos de diseño.' },
+                    tts: { desc: 'Servicio de síntesis de voz multi-timbre basado en MeloTTS y CosyVoice. Soporta múltiples idiomas como chino, inglés y japonés, con varios estilos emocionales, proporcionando API de síntesis de voz en tiempo real de alta calidad.' },
+                    contract: { desc: 'Sistema de gestión de contratos empresariales con análisis de riesgos IA y revisión inteligente integrados. Soporta plantillas de contratos, flujos de aprobación, seguimiento de cumplimiento, reduciendo riesgos legales corporativos.' },
+                    audit: { desc: 'Solución de análisis de código estático que soporta estándares internacionales como MISRA, ISO 26262 y AUTOSAR. Revisión de código automatizada para mejorar la seguridad y conformidad del software.' },
+                    aigc: { desc: 'Plataforma de generación de contenido IA multimodal que cubre texto, imágenes, audio y video. Soporta producción de contenido creativo como cortometrajes de ciencia ficción, videos musicales y animación.' }
+                },
+                services: {
+                    label: 'Lo Que Ofrezco',
+                    title: 'Servicios',
+                    subtitle: 'Basado en 18+ proyectos, proporcionando soluciones full-stack e IA',
+                    llm: { title: 'Desarrollo LLM', desc: 'Desarrollo de aplicaciones inteligentes basadas en LLM, cubriendo RAG, AI Agent, orquestación de flujos de trabajo.', f1: 'Sistema RAG', f2: 'Desarrollo AI Agent', f3: 'Orquestación Workflow', f4: 'Despliegue Privado LLM' },
+                    genai: { title: 'IA Generativa', desc: 'Soluciones de generación de contenido AIGC, incluyendo generación de imágenes, síntesis de voz.', f1: 'Generación Imágenes IA', f2: 'Síntesis de Voz TTS', f3: 'Contenido Multimodal', f4: 'Workflow ComfyUI' },
+                    enterprise: { title: 'Desarrollo Empresarial', desc: 'Desarrollo full-stack empresarial, enfocado en e-commerce, SaaS, arquitectura de alta disponibilidad.', f1: 'Sistemas E-commerce', f2: 'Arquitectura SaaS', f3: 'Microservicios/DevOps', f4: 'Ecosistema WeChat' },
+                    security: { title: 'Seguridad y Cumplimiento', desc: 'Soluciones de seguridad, auditoría de código, detección de seguridad de modelos, cumplimiento de estándares.', f1: 'Análisis Estático de Código', f2: 'Seguridad Modelos IA', f3: 'MISRA/ISO 26262', f4: 'Auditoría de Seguridad' },
+                    mobile: { title: 'Desarrollo iOS/Móvil', desc: 'Desarrollo iOS e ingeniería inversa, herramientas de análisis de App Store.', f1: 'Desarrollo iOS', f2: 'Ingeniería Inversa', f3: 'Análisis App Store', f4: 'Análisis de Protocolos' },
+                    rtc: { title: 'Comunicación Tiempo Real', desc: 'Desarrollo WebRTC, soportando llamadas de audio/video, traducción en tiempo real.', f1: 'Sistemas WebRTC', f2: 'Traducción Tiempo Real', f3: 'Streaming Baja Latencia', f4: 'Integración Bluetooth' },
+                    agent: { title: 'Orquestador de Agentes IA', desc: 'Desarrollo y orquestación de Agentes IA autónomos basados en OpenClaw y frameworks similares, habilitando colaboración multi-Agent, memoria persistente y ejecución automatizada 24/7.', f1: 'Plataforma OpenClaw', f2: 'Orquestación Multi-Agent', f3: 'Sistemas de Memoria Persistente', f4: 'Ejecución Automatizada 24/7' }
+                },
+                cta: { title: '¿Tienes una idea de proyecto?', desc: 'Ya sea construir un nuevo producto desde cero o actualizar sistemas existentes con IA, exploremos juntos cómo la tecnología puede crear valor.', button: 'Iniciar Conversación' },
+                footer: { slogan: 'Conectando creatividad con código, realizando imaginación mediante tecnología', top: 'Volver Arriba', rights: 'Todos los derechos reservados' }
+            },
+            ar: {
+                nav: { about: 'نبذة', projects: 'أعمال', services: 'خدمات', contact: 'تواصل' },
+                hero: {
+                    badge: 'متاح للمشاريع',
+                    title: 'مطور شامل / مهندس حلول الذكاء الاصطناعي',
+                    description: 'من تطوير تطبيقات LLM إلى الذكاء الاصطناعي التوليدي، من الاتصال الفوري إلى الأنظمة المؤسسية—متخصص في تحويل تقنيات الذكاء الاصطناعي المتقدمة إلى حلول منتجات قابلة للتطوير. تم تسليم 18+ مشروعًا تشمل قواعد المعرفة RAG وتوليد الصور بالذكاء الاصطناعي وتوليف الصوت والذكاء الاصطناعي الطبي وأمان الكود. خبير في النشر الخاص وتصميم البنية التحتية عالية الأداء.'
+                },
+                stats: { years: 'سنوات الخبرة', projects: 'المشاريع', innovation: 'الابتكار' },
+                projects: {
+                    label: 'أعمال مختارة',
+                    title: 'المشاريع الرئيسية',
+                    subtitle: 'من الترجمة الفورية إلى التعليم بالذكاء الاصطناعي، كل مشروع يمزج بين التكنولوجيا والإبداع',
+                    wetalk: { desc: 'نظام ترجمة صوتية فورية يدعم أكثر من 50 لغة. مبني على WebRTC للاتصال منخفض الكمون، مدمج مع محرك SenseVoice ASR، مع دعم أجهزة Bluetooth.' },
+                    vr: { desc: 'منصة تعلم الإنجليزية بالواقع الافتراضي مع شخصيات افتراضية بالذكاء الاصطناعي للتدرب على المحادثات الغامرة. محاكاة متعددة السيناريوهات (مقهى، فندق، مكتب) مع أربع أوضاع تعلم.' },
+                    comfy: { title: 'حل ComfyUI/SwarmUI', desc: 'أتمتة سير عمل توليد الصور بالذكاء الاصطناعي على مستوى المؤسسات. يدعم إدارة النماذج ومراقبة الإصدارات والبنية التحتية للنشر الخاص.' },
+                    ecom: { title: 'نظام التجارة الذكية', desc: 'حل تجارة إلكترونية شامل يتضمن إدارة طلبات ما قبل البيع والتكامل العميق مع نظام WeChat وعمليات ما بعد البيع الآلية.' },
+                    irank: { desc: 'أداة سطر أوامر لجلب ترتيب App Store. تدعم استعلامات متعددة البلدان/المناطق والفئات، مشروع مفتوح المصدر مع 30+ Stars.' },
+                    appsniff: { desc: 'أداة محاكاة الشراء في App Store. هندسة عكسية لبروتوكولات App Store، تدعم استخراج وتحليل IPA.' },
+                    awesome: { desc: 'مجموعة من أدوات SaaS للشركات الناشئة. يجمع أدوات مفتوحة المصدر عالية الجودة لمساعدة رواد الأعمال في العثور على التقنية المناسبة.' },
+                    fastelm: { desc: 'نسخة من واجهة Ele.me. منصة توصيل طعام كاملة مبنية بـ Vue.js، تشمل عرض المتاجر، سلة التسوق، نظام الطلبات.' },
+                    onnxguard: { desc: 'أداة كشف أمان نماذج ONNX. أداة تحقق عالية الأداء مكتوبة بلغة Rust، تكشف ملفات النماذج الضارة.' },
+                    dify: { desc: 'منصة تطوير تطبيقات LLM مفتوحة المصدر، تدعم RAG Pipeline وAgent وWorkflow والوظائف المتقدمة الأخرى. نشر خاص مع دعم نماذج لغوية متعددة، بنية تحتية لتطبيقات الذكاء الاصطناعي على مستوى المؤسسات.' },
+                    ragflow: { desc: 'محرك RAG قائم على الفهم العميق للمستندات، يدعم معالجة البيانات ذات التنسيقات المعقدة. تحليل المستندات الذكي، الاسترجاع المتجهي، حل متكامل للتوليد بواسطة النماذج اللغوية الكبيرة.' },
+                    medical: { desc: 'نظام مراقبة جودة الرعاية الصحية قائم على دمج القرارات متعدد الوسائط، يدمج محركات القواعد والرسوم البيانية المعرفية وRAG وتقنيات النماذج اللغوية الكبيرة لتحقيق مراقبة جودة السجلات الطبية والتحقق من الاتساق.' },
+                    comfyui: { desc: 'منصة توليد صور بالذكاء الاصطناعي على مستوى المؤسسات، مبنية على ComfyUI وStable Diffusion. دعم تنسيق سير العمل، إدارة النماذج، التوليد المجمع، توفير قدرات فعالة للرسم بالذكاء الاصطناعي لفِرق التصميم.' },
+                    tts: { desc: 'خدمة تركيب صوتي متعددة الأصوات، مبنية على MeloTTS وCosyVoice. دعم لغات متعددة تشمل الصينية والإنجليزية واليابانية، بأنماط عاطفية متنوعة، توفير واجهة برمجة تطبيقات عالية الجودة للتركيب الصوتي في الوقت الفعلي.' },
+                    contract: { desc: 'نظام إدارة العقود للمؤسسات، يتضمن تحليل المخاطر بالذكاء الاصطناعي والمراجعة الذكية. دعم قوالب العقود، سير عمليات الموافقة، تتبع الأداء، تقليل المخاطر القانونية للمؤسسات.' },
+                    audit: { desc: 'حل تحليل الشفرة الثابتة، يدعم المعايير الدولية مثل MISRA وISO 26262 وAUTOSAR. مراجعة الشفرة الآلية لتحسين أمان البرمجيات والامتثال.' },
+                    aigc: { desc: 'منصة توليد محتوى بالذكاء الاصطناعي متعددة الوسائط، تغطي النصوص والصور والصوت والفيديو. دعم إنتاج محتوى إبداعي مثل الأفلام القصيرة الخيالية العلمية ومقاطع الفيديو الموسيقية والرسوم المتحركة.' }
+                },
+                services: {
+                    label: 'ما أقدمه',
+                    title: 'الخدمات',
+                    subtitle: 'بناءً على 18+ مشروعًا، تقديم حلول تقنية شاملة والذكاء الاصطناعي',
+                    llm: { title: 'تطوير LLM', desc: 'تطوير التطبيقات الذكية بناءً على LLM، يغطي RAG وAI Agent وأتمتة سير العمل.', f1: 'نظام RAG المعرفي', f2: 'تطوير AI Agent', f3: 'أتمتة سير العمل', f4: 'النشر الخاص LLM' },
+                    genai: { title: 'الذكاء الاصطناعي التوليدي', desc: 'حلول توليد المحتوى AIGC، بما في ذلك توليد الصور وتوليف الصوت.', f1: 'توليد الصور بالذكاء الاصطناعي', f2: 'توليف الصوت TTS', f3: 'المحتوى المتعدد الوسائط', f4: 'سير عمل ComfyUI' },
+                    enterprise: { title: 'التطوير المؤسسي', desc: 'التطوير الشامل للمؤسسات، مع التركيز على التجارة الإلكترونية وSaaS والبنية التحتية عالية التوفر.', f1: 'أنظمة التجارة الإلكترونية', f2: 'بنية SaaS', f3: 'الخدمات المصغرة/DevOps', f4: 'نظام WeChat البيئي' },
+                    security: { title: 'الأمن والامتثال', desc: 'حلول الأمان والامتثال، تدقيق الكود، الكشف عن أمان النماذج، الالتزام بالمعايير.', f1: 'تحليل الكود الثابت', f2: 'أمان نماذج الذكاء الاصطناعي', f3: 'MISRA/ISO 26262', f4: 'تدقيق الأمان' },
+                    mobile: { title: 'تطوير iOS/المحمول', desc: 'تطوير iOS والهندسة العكسية، أدوات تحليل App Store.', f1: 'تطوير iOS', f2: 'الهندسة العكسية', f3: 'تحليلات App Store', f4: 'تحليل البروتوكولات' },
+                    rtc: { title: 'الاتصال الفوري', desc: 'تطوير WebRTC، يدعم مكالمات الصوت/الفيديو والترجمة الفورية.', f1: 'أنظمة WebRTC', f2: 'الترجمة الفورية', f3: 'البث المنخفض الكمون', f4: 'تكامل Bluetooth' },
+                    agent: { title: 'أوركستراتور الوكلاء الذكيين', desc: 'تطوير وتنسيق الوكلاء الذكيين المستقلين بناءً على OpenClaw والأطر المماثلة، مما يتيح التعاون متعدد الوكلاء والذاكرة المستمرة والتنفيذ الآلي 24/7.', f1: 'منصة OpenClaw', f2: 'تنسيق متعدد الوكلاء', f3: 'أنظمة الذاكرة المستمرة', f4: 'التنفيذ الآلي 24/7' }
+                },
+                cta: { title: 'هل لديك فكرة مشروع؟', desc: 'سواء كنت تبني منتجاً جديداً من الصفر أو تقوم بتحديث الأنظمة الحالية بالذكاء الاصطناعي، دعنا نستكشف كيف يمكن للتكنولوجيا أن تخلق قيمة معاً.', button: 'ابدأ المحادثة' },
+                footer: { slogan: 'نربط الإبداع بالكود، ونحقق الخيال من خلال التكنولوجيا', top: 'العودة للأعلى', rights: 'جميع الحقوق محفوظة' }
+            },
+            ru: {
+                nav: { about: 'Обо мне', projects: 'Работы', services: 'Услуги', contact: 'Контакты' },
+                hero: {
+                    badge: 'Доступен для проектов',
+                    title: 'Full Stack разработчик / Архитектор AI-решений',
+                    description: 'От разработки LLM-приложений до генеративного ИИ, от real-time коммуникаций до корпоративных систем—специализация на внедрении передовых AI-технологий в масштабируемые продуктовые решения. Реализовано 18+ проектов, включая RAG базы знаний, генерацию изображений ИИ, синтез речи, медицинский ИИ и безопасность кода. Эксперт в частном развертывании и проектировании высокопроизводительной архитектуры.'
+                },
+                stats: { years: 'Лет опыта', projects: 'Проектов', innovation: 'Инновации' },
+                projects: {
+                    label: 'Избранные работы',
+                    title: 'Основные проекты',
+                    subtitle: 'От real-time перевода до AI-образования, каждый проект сочетает технологии и креатив',
+                    wetalk: { desc: 'Система голосового перевода в реальном времени с поддержкой 50+ языков. На базе WebRTC для low-latency коммуникаций, интегрирована с движком SenseVoice ASR, с поддержкой Bluetooth-устройств.' },
+                    vr: { desc: 'VR-платформа для изучения английского с AI-персонажами для иммерсивной практики разговорной речи. Мульти-сценарная симуляция (кафе, отель, офис) с четырьмя режимами обучения.' },
+                    comfy: { title: 'Решение ComfyUI/SwarmUI', desc: 'Корпоративная автоматизация рабочих процессов генерации AI-изображений. Поддержка управления моделями, контроля версий и архитектуры частного развертывания.' },
+                    ecom: { title: 'Система E-commerce', desc: 'Полноценное e-commerce решение, включающее управление предзаказами, глубокую интеграцию с экосистемой WeChat и автоматизированные процессы послепродажного обслуживания.' },
+                    irank: { desc: 'Инструмент командной строки для получения рейтингов App Store. Поддерживает мультистрановые/региональные и категорийные запросы, open-source проект с 30+ Stars.' },
+                    appsniff: { desc: 'Инструмент симуляции покупок в App Store. Реверс-инжиниринг протоколов App Store, поддерживает извлечение и анализ IPA.' },
+                    awesome: { desc: 'Курированная коллекция SaaS-инструментов для стартапов. Собирает качественные open-source инструменты для помощи предпринимателям в выборе технологий.' },
+                    fastelm: { desc: 'Клон фронтенда Ele.me. Полная платформа доставки еды на Vue.js, включая отображение магазинов, корзину, систему заказов.' },
+                    onnxguard: { desc: 'Инструмент обнаружения безопасности ONNX моделей. Высокопроизводительный инструмент валидации на Rust, обнаруживает вредоносные файлы моделей.' },
+                    dify: { desc: 'Платформа разработки приложений LLM с открытым исходным кодом, поддерживающая RAG Pipeline, Agent, Workflow и другие продвинутые функции. Частное развертывание с поддержкой нескольких крупных моделей, инфраструктура корпоративных AI-приложений.' },
+                    ragflow: { desc: 'RAG-движок на основе глубокого понимания документов, поддерживающий обработку данных сложных форматов. Интеллектуальный анализ документов, векторный поиск, интегрированное решение для генерации большими моделями.' },
+                    medical: { desc: 'Система контроля качества медицинской помощи на основе мультимодального слияния решений, интегрирующая технологии механизмов правил, графов знаний, RAG и больших моделей для обеспечения контроля качества медицинских записей и проверки согласованности.' },
+                    comfyui: { desc: 'Корпоративная платформа генерации AI-изображений на основе ComfyUI и Stable Diffusion. Поддержка оркестровки рабочих процессов, управления моделями, пакетной генерации, обеспечение эффективных возможностей AI-рисования для дизайн-команд.' },
+                    tts: { desc: 'Сервис синтеза речи с несколькими голосами на основе MeloTTS и CosyVoice. Поддержка нескольких языков, включая китайский, английский и японский, с различными эмоциональными стилями, обеспечение высококачественного API синтеза речи в реальном времени.' },
+                    contract: { desc: 'Система управления корпоративными контрактами с интегрированным AI-анализом рисков и интеллектуальной проверкой. Поддержка шаблонов контрактов, рабочих процессов утверждения, отслеживания выполнения, снижение юридических рисков компании.' },
+                    audit: { desc: 'Решение для статического анализа кода, поддерживающее международные стандарты, такие как MISRA, ISO 26262 и AUTOSAR. Автоматизированный обзор кода для повышения безопасности и соответствия программного обеспечения.' },
+                    aigc: { desc: 'Мультимодальная платформа генерации AI-контента, охватывающая текст, изображения, аудио и видео. Поддержка производства творческого контента, такого как научно-фантастические короткометражные фильмы, музыкальные клипы и анимация.' }
+                },
+                services: {
+                    label: 'Что я предлагаю',
+                    title: 'Услуги',
+                    subtitle: 'На базе 18+ проектов, предоставление full-stack и AI-решений',
+                    llm: { title: 'Разработка LLM', desc: 'Разработка интеллектуальных приложений на базе LLM, охватывающая RAG, AI Agent, оркестрацию workflow.', f1: 'RAG база знаний', f2: 'Разработка AI Agent', f3: 'Оркестрация Workflow', f4: 'Частное развертывание LLM' },
+                    genai: { title: 'Генеративный ИИ', desc: 'AIGC решения для генерации контента, включая генерацию изображений, синтез речи.', f1: 'Генерация изображений ИИ', f2: 'Синтез речи TTS', f3: 'Мультимодальный контент', f4: 'Workflow ComfyUI' },
+                    enterprise: { title: 'Корпоративная разработка', desc: 'Full-stack корпоративная разработка, фокус на e-commerce, SaaS, архитектуру высокой доступности.', f1: 'E-commerce системы', f2: 'Архитектура SaaS', f3: 'Микросервисы/DevOps', f4: 'Экосистема WeChat' },
+                    security: { title: 'Безопасность и соответствие', desc: 'Решения безопасности, аудит кода, обнаружение безопасности моделей, соответствие стандартам.', f1: 'Статический анализ кода', f2: 'Безопасность моделей ИИ', f3: 'MISRA/ISO 26262', f4: 'Аудит безопасности' },
+                    mobile: { title: 'Разработка iOS/мобильных', desc: 'Разработка iOS и реверс-инжиниринг, инструменты аналитики App Store.', f1: 'Разработка iOS', f2: 'Реверс-инжиниринг', f3: 'Аналитика App Store', f4: 'Анализ протоколов' },
+                    rtc: { title: 'Real-time коммуникации', desc: 'Разработка WebRTC, поддержка аудио/видео звонков, перевод в реальном времени.', f1: 'Системы WebRTC', f2: 'Перевод в реальном времени', f3: 'Стриминг с низкой задержкой', f4: 'Интеграция Bluetooth' },
+                    agent: { title: 'AI-Агент Оркестратор', desc: 'Разработка и оркестрация автономных AI-агентов на базе OpenClaw и аналогичных фреймворков, обеспечивающих мульти-агентное сотрудничество, постоянную память и 24/7 автоматизированное выполнение.', f1: 'Платформа OpenClaw', f2: 'Мульти-агентная оркестрация', f3: 'Системы постоянной памяти', f4: '24/7 автоматизированное выполнение' }
+                },
+                cta: { title: 'Есть идея проекта?', desc: 'Будь то создание нового продукта с нуля или AI-модернизация существующих систем, давайте вместе исследуем, как технологии могут создавать ценность.', button: 'Начать разговор' },
+                footer: { slogan: 'Соединяя креативность с кодом, воплощая воображение через технологии', top: 'Наверх', rights: 'Все права защищены' }
+            },
+            ja: {
+                nav: { about: '概要', projects: '作品', services: 'サービス', contact: 'お問い合わせ' },
+                hero: {
+                    badge: 'プロジェクト受付中',
+                    title: 'フルスタック開発者 / AIソリューションアーキテクト',
+                    description: 'LLMアプリケーション開発から生成AI、リアルタイム通信からエンタープライズシステムまで—最先端のAI技術をスケーラブルなプロダクトソリューションに実装することを専門としています。RAGナレッジベース、AI画像生成、音声合成、医療AI、コードセキュリティなど、18以上のプロジェクトを納品。プライベートデプロイメントと高性能アーキテクチャ設計の専門家。'
+                },
+                stats: { years: '年の経験', projects: '完了プロジェクト', innovation: '革新性' },
+                projects: {
+                    label: 'Selected Works',
+                    title: '主要作品',
+                    subtitle: 'リアルタイム翻訳からAI教育まで、各プロジェクトは技術と創造性の融合です',
+                    wetalk: { desc: '50以上の言語をサポートするリアルタイム音声翻訳システム。WebRTCベースの低レイテンシ通信、SenseVoice ASRエンジン統合、Bluetoothデバイスサポートにより、言語の壁を打破します。' },
+                    vr: { desc: 'AIバーチャルキャラクターによる没入型会話練習を提供するVR英語学習プラットフォーム。マルチシナリオシミュレーション（カフェ、ホテル、オフィス）と4つの学習モード。' },
+                    comfy: { title: 'ComfyUI/SwarmUIソリューション', desc: 'エンタープライズグレードのAI画像生成ワークフロー自動化。モデル管理、バージョン管理、プライベートデプロイメントアーキテクチャをサポート。' },
+                    ecom: { title: 'スマートECシステム', desc: 'プリセール注文管理、WeChatエコシステムとの深い統合、自動化されたアフターサービスプロセスを含むフルチェーンeコマースソリューション。' },
+                    irank: { desc: 'App Storeランキングを取得するコマンドラインツール。複数の国/地域とカテゴリのクエリをサポート、30+ Starsのオープンソースプロジェクト。' },
+                    appsniff: { desc: 'App Store購入シミュレーションツール。App Storeプロトコルのリバースエンジニアリング、IPAの抽出と分析をサポート。' },
+                    awesome: { desc: '厳選されたスタートアップSaaSツールコレクション。起業家が適切な技術スタックを見つけるのを助けるための高品質なオープンソースツールを収録。' },
+                    fastelm: { desc: 'Ele.meフロントエンドのクローン。Vue.jsで構築された完全なフードデリバリープラットフォーム、店舗表示、カート、注文システムを含む。' },
+                    onnxguard: { desc: 'ONNXモデルセキュリティ検出ツール。Rustで書かれた高性能モデル検証ツール、悪意のあるモデルファイルを検出してAI推論環境を保護。' },
+                    dify: { desc: 'RAG Pipeline、Agent、Workflowなどの高度な機能をサポートするオープンソースLLMアプリケーション開発プラットフォーム。プライベートデプロイメントで複数の大規模モデルをサポートし、エンタープライズグレードのAIアプリケーションインフラストラクチャを提供します。' },
+                    ragflow: { desc: '深い文書理解に基づくRAGエンジンで、複雑な形式のデータ処理をサポート。インテリジェントな文書解析、ベクトル検索、大規模モデル生成の統合ソリューション。' },
+                    medical: { desc: 'マルチモーダル意思決定融合に基づく医療品質管理システム。ルールエンジン、知識グラフ、RAG、大規模モデル技術を統合し、医療記録の品質管理と整合性検証を実現します。' },
+                    comfyui: { desc: 'ComfyUIとStable Diffusionに基づくエンタープライズグレードのAI画像生成プラットフォーム。ワークフロー編成、モデル管理、バッチ生成をサポートし、デザインチームに効率的なAI絵画機能を提供します。' },
+                    tts: { desc: 'MeloTTSとCosyVoiceに基づくマルチ音色音声合成サービス。中国語、英語、日本語などの多言語と複数の感情スタイルをサポートし、高品質なリアルタイム音声合成APIを提供します。' },
+                    contract: { desc: 'AIリスク分析とインテリジェントレビューを統合したエンタープライズ契約管理システム。契約テンプレート、承認ワークフロー、履行追跡をサポートし、企業の法的リスクを低減します。' },
+                    audit: { desc: 'MISRA、ISO 26262、AUTOSARなどの国際規格に対応した静的コード分析ソリューション。自動化されたコードレビューにより、ソフトウェアのセキュリティとコンプライアンスを向上させます。' },
+                    aigc: { desc: 'テキスト、画像、音声、動画をカバーするマルチモーダルAIコンテンツ生成プラットフォーム。SFショートフィルム、ミュージックビデオ、アニメーション制作などのクリエイティブコンテンツ制作をサポートします。' }
+                },
+                services: {
+                    label: 'What I Offer',
+                    title: '提供サービス',
+                    subtitle: '18以上のプロジェクト実績に基づく、フルスタック技術とAIソリューション',
+                    llm: { title: 'LLMアプリ開発', desc: 'LLMベースのインテリジェントアプリケーション開発。RAG知識ベース、AI Agent、ワークフロー自動化をカバー。', f1: 'RAG知識ベースシステム', f2: 'AI Agent開発', f3: 'LLMワークフロー自動化', f4: 'プライベートLLMデプロイ' },
+                    genai: { title: '生成AI', desc: 'AIGCコンテンツ生成ソリューション。AI画像生成、音声合成、マルチモーダルコンテンツ制作。', f1: 'AI画像生成プラットフォーム', f2: '音声合成TTSサービス', f3: 'マルチモーダルコンテンツ', f4: 'ComfyUIワークフロー' },
+                    enterprise: { title: 'エンタープライズ開発', desc: 'フルスタックエンタープライズ開発。eコマース、SaaS、高可用性アーキテクチャに注力。', f1: 'eコマースシステム', f2: 'SaaSアーキテクチャ', f3: 'マイクロサービス/DevOps', f4: 'WeChatエコシステム' },
+                    security: { title: 'セキュリティとコンプライアンス', desc: 'ソフトウェアセキュリティとコンプライアンスソリューション。コード監査、モデルセキュリティ検出、標準適合。', f1: '静的コード解析', f2: 'AIモデルセキュリティ', f3: 'MISRA/ISO 26262', f4: 'セキュリティ監査' },
+                    mobile: { title: 'iOS/モバイル開発', desc: 'iOSアプリ開発とリバースエンジニアリング。App Storeデータ分析ツール。', f1: 'iOSアプリ開発', f2: 'リバースエンジニアリング', f3: 'App Store分析', f4: 'プロトコル分析' },
+                    rtc: { title: 'リアルタイム通信', desc: 'WebRTCリアルタイム通信システム開発。音声/ビデオ通話、リアルタイム翻訳、低遅延データ転送。', f1: 'WebRTCシステム', f2: 'リアルタイム翻訳', f3: '低遅延ストリーミング', f4: 'Bluetooth統合' },
+                    agent: { title: 'AIエージェントオーケストレーター', desc: 'OpenClaw等のフレームワークに基づく自律型AIエージェントの開発とオーケストレーション。マルチエージェント協調、永続的メモリ、24/7自動化タスク実行を実現。', f1: 'OpenClawエージェントプラットフォーム', f2: 'マルチエージェントオーケストレーション', f3: '永続的メモリシステム', f4: '24/7自動化実行' }
+                },
+                cta: { title: 'プロジェクトのアイデアはありますか？', desc: 'ゼロからの新規プロダクト構築でも、既存システムのAI化アップグレードでも、一緒に技術が価値を生み出す方法を探りましょう。', button: '対話を始める' },
+                footer: { slogan: 'コードで創造性をつなぎ、技術で想像を実現する', top: 'トップへ戻る', rights: '全著作権所有' }
+            },
+            fr: {
+                nav: { about: 'À propos', projects: 'Projets', services: 'Services', contact: 'Contact' },
+                hero: {
+                    badge: 'Disponible pour des projets',
+                    title: 'Développeur Full Stack / Architecte Solutions IA',
+                    description: "Du développement d'applications LLM à l'IA générative, de la communication en temps réel aux systèmes d'entreprise—spécialisé dans le déploiement des technologies IA de pointe en solutions produits évolutives. 18+ projets livrés couvrant les bases de connaissances RAG, la génération d'images IA, la synthèse vocale, l'IA médicale et la sécurité du code. Expert en déploiement privé et conception d'architecture haute performance."
+                },
+                stats: { years: "Années d'exp.", projects: 'Projets', innovation: 'Innovation' },
+                projects: {
+                    label: 'Travaux Sélectionnés',
+                    title: 'Projets Principaux',
+                    subtitle: "De la traduction en temps réel à l'éducation IA, chaque projet fusionne technologie et créativité",
+                    wetalk: { desc: "Système de traduction vocale en temps réel prenant en charge plus de 50 langues. Basé sur WebRTC pour une communication à faible latence, intégré au moteur SenseVoice ASR, avec prise en charge des appareils Bluetooth." },
+                    vr: { desc: "Plateforme d'apprentissage de l'anglais en VR avec personnages virtuels IA pour la pratique immersive des conversations. Simulation multi-scénarios (café, hôtel, bureau) avec quatre modes d'apprentissage." },
+                    comfy: { title: 'Solution ComfyUI/SwarmUI', desc: "Automatisation des flux de travail de génération d'images IA de niveau entreprise. Prise en charge de la gestion des modèles, du contrôle des versions et de l'architecture de déploiement privé." },
+                    ecom: { title: 'Système E-commerce Intelligent', desc: "Solution e-commerce complète incluant la gestion des commandes en prévente, l'intégration approfondie avec l'écosystème WeChat et les processus automatisés après-vente." },
+                    irank: { desc: "Outil en ligne de commande pour récupérer les classements App Store. Supporte les requêtes multi-pays/régions et catégories, projet open-source avec 30+ Stars." },
+                    appsniff: { desc: "Outil de simulation d'achat sur App Store. Rétro-ingénierie des protocoles App Store, supporte l'extraction et l'analyse d'IPA." },
+                    awesome: { desc: "Collection organisée d'outils SaaS pour startups. Compile des outils open-source de qualité pour aider les entrepreneurs à trouver la bonne stack technique." },
+                    fastelm: { desc: 'Clone du frontend Ele.me. Plateforme complète de livraison de nourriture construite avec Vue.js, incluant affichage des commerces, panier, système de commandes.' },
+                    onnxguard: { desc: "Outil de détection de sécurité pour modèles ONNX. Outil de validation haute performance écrit en Rust, détecte les fichiers de modèles malveillants." },
+                    dify: { desc: "Plateforme de développement d'applications LLM open-source prenant en charge RAG Pipeline, Agent, Workflow et autres fonctions avancées. Déploiement privé avec support pour plusieurs grands modèles, infrastructure d'applications IA d'entreprise." },
+                    ragflow: { desc: "Moteur RAG basé sur la compréhension profonde de documents, prenant en charge le traitement de données en formats complexes. Analyse intelligente de documents, récupération vectorisée, solution intégrée de génération par grands modèles." },
+                    medical: { desc: "Système de contrôle qualité médical basé sur la fusion de décisions multimodales, intégrant des technologies de moteurs de règles, graphes de connaissances, RAG et grands modèles pour réaliser le contrôle qualité des dossiers médicaux et la vérification de cohérence." },
+                    comfyui: { desc: "Plateforme de génération d'images IA de niveau entreprise basée sur ComfyUI et Stable Diffusion. Prise en charge de l'orchestration de flux de travail, gestion de modèles, génération par lots, fournissant des capacités efficaces de peinture IA aux équipes de conception." },
+                    tts: { desc: "Service de synthèse vocale multi-timbre basé sur MeloTTS et CosyVoice. Prise en charge de plusieurs langues comme le chinois, l'anglais et le japonais, avec divers styles émotionnels, fournissant une API de synthèse vocale en temps réel de haute qualité." },
+                    contract: { desc: "Système de gestion de contrats d'entreprise avec analyse de risques IA et révision intelligente intégrées. Prise en charge de modèles de contrats, flux de travail d'approbation, suivi d'exécution, réduisant les risques juridiques des entreprises." },
+                    audit: { desc: "Solution d'analyse de code statique prenant en charge les normes internationales telles que MISRA, ISO 26262 et AUTOSAR. Révision de code automatisée pour améliorer la sécurité et la conformité du logiciel." },
+                    aigc: { desc: "Plateforme de génération de contenu IA multimodale couvrant texte, images, audio et vidéo. Prise en charge de la production de contenu créatif comme des courts-métrages de science-fiction, des clips musicaux et de l'animation." }
+                },
+                services: {
+                    label: 'Ce que je propose',
+                    title: 'Services',
+                    subtitle: "Basé sur 18+ projets, fourniture de solutions full-stack et d'IA",
+                    llm: { title: 'Développement LLM', desc: "Développement d'applications intelligentes basées sur LLM, couvrant RAG, AI Agent, orchestration de workflow.", f1: 'Système RAG', f2: 'Développement AI Agent', f3: 'Orchestration Workflow', f4: 'Déploiement Privé LLM' },
+                    genai: { title: 'IA Générative', desc: "Solutions de génération de contenu AIGC, incluant génération d'images, synthèse vocale.", f1: "Génération d'Images IA", f2: 'Synthèse Vocale TTS', f3: 'Contenu Multimodal', f4: 'Workflow ComfyUI' },
+                    enterprise: { title: "Développement d'Entreprise", desc: "Développement full-stack d'entreprise, focus sur e-commerce, SaaS, architecture haute disponibilité.", f1: "Systèmes E-commerce", f2: 'Architecture SaaS', f3: 'Microservices/DevOps', f4: 'Écosystème WeChat' },
+                    security: { title: 'Sécurité et Conformité', desc: 'Solutions de sécurité, audit de code, détection de sécurité des modèles, conformité aux normes.', f1: 'Analyse Statique de Code', f2: 'Sécurité Modèles IA', f3: 'MISRA/ISO 26262', f4: 'Audit de Sécurité' },
+                    mobile: { title: 'Développement iOS/Mobile', desc: "Développement iOS et rétro-ingénierie, outils d'analyse App Store.", f1: 'Développement iOS', f2: 'Rétro-ingénierie', f3: 'Analyse App Store', f4: 'Analyse de Protocoles' },
+                    rtc: { title: 'Communication Temps Réel', desc: 'Développement WebRTC, support des appels audio/vidéo, traduction en temps réel.', f1: 'Systèmes WebRTC', f2: 'Traduction Temps Réel', f3: 'Streaming Faible Latence', f4: 'Intégration Bluetooth' },
+                    agent: { title: "Orchéstrateur d'Agents IA", desc: "Développement et orchestration d'agents IA autonomes basés sur OpenClaw et frameworks similaires, permettant la collaboration multi-agents, la mémoire persistante et l'exécution automatisée 24/7.", f1: 'Plateforme OpenClaw', f2: 'Orchestration Multi-Agents', f3: 'Systèmes de Mémoire Persistante', f4: 'Exécution Automatisée 24/7' }
+                },
+                cta: { title: 'Une idée de projet ?', desc: "Qu'il s'agisse de créer un nouveau produit à partir de zéro ou de mettre à niveau des systèmes existants avec l'IA, explorons ensemble comment la technologie peut créer de la valeur.", button: 'Commencer la Conversation' },
+                footer: { slogan: 'Connecter la créativité avec le code, réaliser imagination par technologie', top: 'Retour Haut', rights: 'Tous droits réservés' }
+            },
+            de: {
+                nav: { about: 'Über', projects: 'Projekte', services: 'Dienstleistungen', contact: 'Kontakt' },
+                hero: {
+                    badge: 'Verfügbar für Projekte',
+                    title: 'Full Stack Entwickler / AI Solutions Architekt',
+                    description: 'Von der LLM-Anwendungsentwicklung bis zur generativen KI, von der Echtzeitkommunikation bis zu Unternehmenssystemen—spezialisiert auf die Bereitstellung modernster KI-Technologien in skalierbare Produktsolutions. 18+ Projekte umgesetzt, darunter RAG-Wissensdatenbanken, KI-Bildgenerierung, Sprachsynthese, Medizin-KI und Codesicherheit. Experte für Private Deployment und Hochleistungsarchitektur-Design.'
+                },
+                stats: { years: 'Jahre Erf.', projects: 'Projekte', innovation: 'Innovation' },
+                projects: {
+                    label: 'Ausgewählte Arbeiten',
+                    title: 'Hauptprojekte',
+                    subtitle: 'Von Echtzeit-Übersetzung bis KI-Bildung, jedes Projekt vereint Technologie und Kreativität',
+                    wetalk: { desc: 'Echtzeit-Sprachübersetzungssystem mit Unterstützung für über 50 Sprachen. Basierend auf WebRTC für latenzarme Kommunikation, integriert mit SenseVoice ASR-Engine, mit Unterstützung für Bluetooth-Geräte.' },
+                    vr: { desc: 'VR-Englischlernplattform mit KI-Virtual-Charakteren für immersives Gesprächstraining. Multi-Szenario-Simulation (Café, Hotel, Büro) mit vier Lernmodi.' },
+                    comfy: { title: 'ComfyUI/SwarmUI Lösung', desc: 'KI-Bildgenerierungs-Workflow-Automatisierung auf Unternehmensniveau. Unterstützung von Modellmanagement, Versionskontrolle und privater Bereitstellungsarchitektur.' },
+                    ecom: { title: 'Intelligentes E-Commerce System', desc: 'Umfassende E-Commerce-Lösung einschließlich Vorbestellungsmanagement, tiefer Integration mit dem WeChat-Ökosystem und automatisierten After-Sales-Prozessen.' },
+                    irank: { desc: 'Kommandozeilen-Tool zum Abrufen von App Store-Rankings. Unterstützt Multi-Land/Region- und Kategorieabfragen, Open-Source-Projekt mit 30+ Stars.' },
+                    appsniff: { desc: 'App Store-Kaufsimulations-Tool. Reverse Engineering von App Store-Protokollen, unterstützt IPA-Extraktion und -Analyse.' },
+                    awesome: { desc: 'Kuratierte Sammlung von SaaS-Tools für Startups. Sammelt hochwertige Open-Source-Tools, um Unternehmern zu helfen, den richtigen Tech-Stack zu finden.' },
+                    fastelm: { desc: 'Clone des Ele.me-Frontends. Komplette Food-Delivery-Plattform mit Vue.js, einschließlich Geschäftsanzeige, Warenkorb, Bestellsystem.' },
+                    onnxguard: { desc: 'ONNX-Modell-Sicherheitserkennungs-Tool. Hochleistungsfähiges Validierungs-Tool in Rust geschrieben, erkennt bösartige Modelldateien.' },
+                    dify: { desc: 'Open-Source-LLM-Anwendungsentwicklungsplattform, die RAG Pipeline, Agent, Workflow und andere fortgeschrittene Funktionen unterstützt. Private Bereitstellung mit Unterstützung für mehrere große Modelle, unternehmensweite KI-Anwendungsinfrastruktur.' },
+                    ragflow: { desc: 'RAG-Engine basierend auf tiefem Dokumentenverständnis, unterstützt Verarbeitung komplexer Datenformate. Intelligente Dokumentenanalyse, vektorisierte Abfrage, integrierte Lösung für große Modellgenerierung.' },
+                    medical: { desc: 'Medizinisches Qualitätskontrollsystem basierend auf multimodaler Entscheidungsfusion, integriert Regel-Engines, Wissensgraphen, RAG und große Modelltechnologien zur Realisierung von Qualitätskontrolle und Konsistenzprüfung medizinischer Aufzeichnungen.' },
+                    comfyui: { desc: 'Unternehmensweite KI-Bildgenerierungsplattform basierend auf ComfyUI und Stable Diffusion. Unterstützung von Workflow-Orchestrierung, Modellmanagement, Stapelgenerierung, bietet effiziente KI-Malfähigkeiten für Designteams.' },
+                    tts: { desc: 'Multi-Stimmen-Sprachsynthesedienst basierend auf MeloTTS und CosyVoice. Unterstützung mehrerer Sprachen wie Chinesisch, Englisch und Japanisch, mit verschiedenen emotionalen Stilen, bietet hochwertige Echtzeit-Sprachsynthese-API.' },
+                    contract: { desc: 'Unternehmensweites Vertragsmanagementsystem mit integrierter KI-Risikoanalyse und intelligenter Überprüfung. Unterstützung von Vertragsvorlagen, Genehmigungs-Workflows, Leistungsverfolgung, Reduzierung rechtlicher Unternehmensrisiken.' },
+                    audit: { desc: 'Lösung für statische Code-Analyse, die internationale Standards wie MISRA, ISO 26262 und AUTOSAR unterstützt. Automatisierte Code-Überprüfung zur Verbesserung der Software-Sicherheit und -Konformität.' },
+                    aigc: { desc: 'Multimodale KI-Inhaltsgenerierungsplattform, die Text, Bilder, Audio und Video abdeckt. Unterstützung der Produktion kreativer Inhalte wie Science-Fiction-Kurzfilme, Musikvideos und Animationen.' }
+                },
+                services: {
+                    label: 'Was ich anbiete',
+                    title: 'Dienstleistungen',
+                    subtitle: 'Basierend auf 18+ Projekten, Bereitstellung von Full-Stack und KI-Lösungen',
+                    llm: { title: 'LLM-Entwicklung', desc: 'Entwicklung intelligenter Anwendungen basierend auf LLM, abdeckend RAG, AI Agent, Workflow-Orchestrierung.', f1: 'RAG-Wissensbasis', f2: 'AI Agent-Entwicklung', f3: 'Workflow-Orchestrierung', f4: 'Private LLM-Bereitstellung' },
+                    genai: { title: 'Generative KI', desc: 'AIGC Content-Generierungslösungen, einschließlich KI-Bildgenerierung, Sprachsynthese.', f1: 'KI-Bildgenerierung', f2: 'Sprachsynthese TTS', f3: 'Multimodaler Content', f4: 'ComfyUI Workflow' },
+                    enterprise: { title: 'Unternehmensentwicklung', desc: 'Full-Stack Unternehmensentwicklung, Fokus auf E-Commerce, SaaS, Hochverfügbarkeitsarchitektur.', f1: 'E-Commerce-Systeme', f2: 'SaaS-Architektur', f3: 'Microservices/DevOps', f4: 'WeChat-Ökosystem' },
+                    security: { title: 'Sicherheit & Compliance', desc: 'Software-Sicherheits- und Compliance-Lösungen, Code-Audit, Modellsicherheitserkennung, Standard-Compliance.', f1: 'Statische Code-Analyse', f2: 'KI-Modellsicherheit', f3: 'MISRA/ISO 26262', f4: 'Sicherheitsaudit' },
+                    mobile: { title: 'iOS/Mobile-Entwicklung', desc: 'iOS-Entwicklung und Reverse Engineering, App Store-Datenanalysetools.', f1: 'iOS-Entwicklung', f2: 'Reverse Engineering', f3: 'App Store-Analytik', f4: 'Protokollanalyse' },
+                    rtc: { title: 'Echtzeit-Kommunikation', desc: 'WebRTC Echtzeitkommunikationssystementwicklung, Unterstützung von Audio/Video-Anrufen, Echtzeit-Übersetzung.', f1: 'WebRTC-Systeme', f2: 'Echtzeit-Übersetzung', f3: 'Low-Latency-Streaming', f4: 'Bluetooth-Integration' },
+                    agent: { title: 'KI-Agent Orchestrator', desc: 'Entwicklung und Orchestrierung autonomer KI-Agenten basierend auf OpenClaw und ähnlichen Frameworks, ermöglicht Multi-Agent-Zusammenarbeit, persistente Speicherung und 24/7 automatisierte Ausführung.', f1: 'OpenClaw Agent-Plattform', f2: 'Multi-Agent-Orchestrierung', f3: 'Persistente Speichersysteme', f4: '24/7 automatisierte Ausführung' }
+                },
+                cta: { title: 'Eine Projektidee?', desc: 'Ob ein neues Produkt von Grund auf neu entwickelt oder bestehende Systeme mit KI aufgerüstet werden, lassen Sie uns gemeinsam erforschen, wie Technologie Wert schaffen kann.', button: 'Gespräch beginnen' },
+                footer: { slogan: 'Kreativität mit Code verbinden, Vorstellungskraft durch Technologie verwirklichen', top: 'Nach oben', rights: 'Alle Rechte vorbehalten' }
+            }
+        };
+
+        // Language switching functionality
+        const langDropdown = document.getElementById('langDropdown');
+        const langToggle = document.getElementById('langToggle');
+        const currentLangSpan = document.getElementById('currentLang');
+        const langOptions = document.querySelectorAll('.lang-option');
+        const body = document.body;
+
+        const langNames = {
+            zh: '中文',
+            en: 'English',
+            es: 'Español',
+            ar: 'العربية',
+            ru: 'Русский',
+            ja: '日本語',
+            fr: 'Français',
+            de: 'Deutsch'
+        };
+
+        function updateContent(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let value = t;
+                for (const k of keys) {
+                    value = value?.[k];
+                }
+                if (value) {
+                    el.textContent = value;
+                }
+            });
+
+            // Update page language
+            body.setAttribute('lang', lang);
+            document.documentElement.lang = lang;
+
+            // Update current language display
+            currentLangSpan.textContent = langNames[lang];
+
+            // Update active option
+            langOptions.forEach(option => {
+                option.classList.toggle('active', option.dataset.lang === lang);
+            });
+
+            // Save preference
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        // Toggle dropdown
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('open');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            langDropdown.classList.remove('open');
+        });
+
+        // Event listeners for language options
+        langOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                updateContent(option.dataset.lang);
+                langDropdown.classList.remove('open');
+            });
+        });
+
+        // Load saved preference or detect browser language
+        const savedLang = localStorage.getItem('preferred-lang');
+        const browserLang = navigator.language.split('-')[0];
+        const supportedLangs = ['zh', 'en', 'es', 'ar', 'ru', 'ja', 'fr', 'de'];
+        const defaultLang = savedLang || (supportedLangs.includes(browserLang) ? browserLang : 'en');
+        updateContent(defaultLang);
+
+        // Set initial active option
+        langOptions.forEach(option => {
+            option.classList.toggle('active', option.dataset.lang === defaultLang);
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start) + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + '+';
+                }
+            }
+            updateCounter();
+        }
+
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statValues = entry.target.querySelectorAll('.stat-value');
+                    statValues.forEach((stat, index) => {
+                        const text = stat.textContent;
+                        if (text.includes('10')) {
+                            setTimeout(() => animateCounter(stat, 10), index * 200);
+                        } else if (text.includes('50')) {
+                            setTimeout(() => animateCounter(stat, 50), index * 200);
+                        }
+                    });
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const hero = document.querySelector('.hero');
+        if (hero) {
+            heroObserver.observe(hero);
+        }
+
+        // Theme Switcher
+        const themeToggle = document.getElementById('themeToggle');
+        const themePanel = document.getElementById('themePanel');
+        const themeOptions = document.querySelectorAll('.theme-option');
+        const body = document.body;
+
+        // Theme names for i18n
+        const themeNames = {
+            zh: {
+                dark: '暗夜 (默认)',
+                light: '白昼',
+                ocean: '深海',
+                forest: '森林',
+                sunset: '日落',
+                aurora: '极光',
+                mono: '黑白'
+            },
+            en: {
+                dark: 'Dark (Default)',
+                light: 'Light',
+                ocean: 'Ocean',
+                forest: 'Forest',
+                sunset: 'Sunset',
+                aurora: 'Aurora',
+                mono: 'Monochrome'
+            }
+        };
+
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('preferred-theme', theme);
+
+            // Update active state
+            themeOptions.forEach(option => {
+                option.classList.toggle('active', option.dataset.theme === theme);
+            });
+        }
+
+        // Toggle theme panel
+        themeToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themePanel.classList.toggle('open');
+        });
+
+        // Close panel when clicking outside
+        document.addEventListener('click', () => {
+            themePanel.classList.remove('open');
+        });
+
+        // Prevent panel click from closing
+        themePanel.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Theme selection
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                setTheme(option.dataset.theme);
+                themePanel.classList.remove('open');
+            });
+        });
+
+        // Load saved theme preference
+        const savedTheme = localStorage.getItem('preferred-theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+
+        // Update theme names based on current language
+        function updateThemeNames(lang) {
+            const names = themeNames[lang] || themeNames.zh;
+            themeOptions.forEach(option => {
+                const themeKey = option.dataset.theme;
+                const nameSpan = option.querySelector('.theme-name');
+                if (nameSpan && names[themeKey]) {
+                    nameSpan.textContent = names[themeKey];
+                }
+            });
+        }
+
+        // Listen for language changes
+        const originalUpdateContent = updateContent;
+        updateContent = function(lang) {
+            originalUpdateContent(lang);
+            updateThemeNames(lang);
+        };
+
+        // Initialize theme names
+        updateThemeNames('zh');
+    </script>
+</body>
+</html>

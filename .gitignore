@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Keynote files
+*.key
+
+# Python scripts (build tools)
+*.py
+
+# Claude
+.claude/
+
+# Node modules (if any)
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
