@@ -1,0 +1,19 @@
+{
+  "name": "zlinks-cc",
+  "version": "2.0.0",
+  "description": "zlinks.cc personal website - React + Vite + Hono + Cloudflare Workers",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w frontend",
+    "build": "npm run build -w frontend",
+    "deploy": "npm run deploy -w backend",
+    "dev:backend": "npm run dev -w backend"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
