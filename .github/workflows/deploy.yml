@@ -25,12 +25,23 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd frontend
+          npm ci
 
       - name: Build frontend
-        run: npm run build
-        working-directory: ./frontend
+        run: |
+          cd frontend
+          npm run build
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
@@ -38,5 +49,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: zlinks-cc
-          directory: ./frontend/dist
+          directory: frontend/dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
