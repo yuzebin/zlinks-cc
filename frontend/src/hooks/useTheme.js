@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 
-const themes = ['dark', 'light', 'ocean', 'forest', 'sunset', 'aurora', 'mono']
+const themes = [
+  'dark', 'light', 'ocean', 'forest', 'sunset', 'aurora', 'mono',
+  'cherry', 'lavender', 'amber', 'emerald', 'sky', 'rose', 'midnight'
+]
 
 export function useTheme() {
   const [theme, setTheme] = useState(() => {

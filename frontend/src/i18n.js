@@ -31,6 +31,13 @@ const resources = {
         sunset: '日落',
         aurora: '极光',
         mono: '黑白',
+        cherry: '樱桃',
+        lavender: '薰衣草',
+        amber: '琥珀',
+        emerald: '翡翠',
+        sky: '天空',
+        rose: '玫瑰',
+        midnight: '午夜',
       }
     }
   },
@@ -62,6 +69,13 @@ const resources = {
         sunset: 'Sunset',
         aurora: 'Aurora',
         mono: 'Mono',
+        cherry: 'Cherry',
+        lavender: 'Lavender',
+        amber: 'Amber',
+        emerald: 'Emerald',
+        sky: 'Sky',
+        rose: 'Rose',
+        midnight: 'Midnight',
       }
     }
   },

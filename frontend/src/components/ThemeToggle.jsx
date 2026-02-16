@@ -11,6 +11,13 @@ const themes = [
   { id: 'sunset', bg: '#1a0a0a' },
   { id: 'aurora', bg: '#0f0518' },
   { id: 'mono', bg: '#000000' },
+  { id: 'cherry', bg: '#1a0510' },
+  { id: 'lavender', bg: '#0f0a18' },
+  { id: 'amber', bg: '#1a1005' },
+  { id: 'emerald', bg: '#051a10' },
+  { id: 'sky', bg: '#051018' },
+  { id: 'rose', bg: '#18050a' },
+  { id: 'midnight', bg: '#050510' },
 ];
 
 export function ThemeToggle() {
