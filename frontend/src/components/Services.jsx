@@ -1,14 +1,20 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const services = [
-  { id: 'llm', num: '01', title: 'LLM应用开发', desc: '基于大语言模型的智能应用开发，涵盖RAG知识库、AI Agent、工作流编排等企业级解决方案。' },
-  { id: 'genai', num: '02', title: '生成式AI', desc: 'AIGC内容生成解决方案，包括AI图像生成、语音合成、多模态内容创作平台搭建。' },
-  { id: 'enterprise', num: '03', title: '企业级开发', desc: '全栈企业应用开发，专注电商系统、SaaS平台、业务中台等高并发、高可用架构设计。' },
-  { id: 'security', num: '04', title: '安全与合规', desc: '软件安全与合规解决方案，提供代码审计、模型安全检测、行业标准合规咨询服务。' },
+  { id: 'architecture', num: '01', title: '系统架构设计', desc: '精通Linux体系架构，10+年Java/Python开发经验。擅长高并发、负载均衡与分布式系统设计，熟悉Django、Flask、FastAPI、SpringCloud等主流框架。' },
+  { id: 'backend', num: '02', title: '后端开发', desc: '20年专业开发经验，精通PHP、Python、Java、JavaScript、Go等多语言。熟悉MySQL、PostgreSQL、Oracle、MongoDB、Redis等存储技术及分布式云数据库应用。' },
+  { id: 'bigdata', num: '03', title: '大数据平台', desc: '熟悉Hadoop、Spark、Kafka、Flink等大数据技术栈。构建基于PostgreSQL的综合分析平台和数据仓库，熟练掌握ETL、CDC等数据处理方法。' },
+  { id: 'ai', num: '04', title: 'AI/算法', desc: '利用机器学习进行音频相似度计算、文字互转。基于NLP建立自动应答与智能客服系统，使用BERT语言模型解决临床智能诊断、疾病风险预测等问题。' },
+  { id: 'management', num: '05', title: '研发管理', desc: '10+年研发管理经验，多年Scrum敏捷开发实践。带团队50-200人，拥有大型项目全局操盘经验，既有全局视野又能深入一线技术。' },
+  { id: 'consulting', num: '06', title: '技术顾问', desc: '为多家企业提供行业前沿技术指导、产品战略规划、研发团队管理、技术架构审核、人员成长辅导等专业咨询服务。' },
+  { id: 'security', num: '07', title: '安全与合规', desc: '软件安全与合规解决方案，提供代码审计、模型安全检测、行业安全标准建设，医疗AI产品合规性要求保障。' },
+  { id: 'industry', num: '08', title: '行业解决方案', desc: '深耕医疗AI、物联网IoT、大数据、数字孪生、区块链等多个行业，成功交付智慧电厂、智慧船舶、智慧码头等企业级产品。' },
 ];
 
 export function Services() {
   const { t } = useTranslation();
+  const [hoveredService, setHoveredService] = useState(null);
 
   return (
     <section id="services" className="py-24 px-6 bg-[var(--bg-secondary)]/30">
@@ -23,13 +29,69 @@ export function Services() {
           {services.map((service) => (
             <div
               key={service.id}
-              className="p-8 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[var(--accent-cyan)]/30 transition-all duration-300 group"
+              className="relative group"
+              onMouseEnter={() => setHoveredService(service.id)}
+              onMouseLeave={() => setHoveredService(null)}
             >
-              <div className="text-6xl font-bold text-[var(--text-muted)]/20 mb-4 font-mono">{service.num}</div>
-              <h3 className="text-xl font-bold mb-3 group-hover:text-[var(--accent-cyan)] transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-[var(--text-secondary)]">{service.desc}</p>
+              {/* 卡片主体 */}
+              <div className="p-8 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[var(--accent-cyan)]/30 transition-all duration-300">
+                <div className="text-6xl font-bold text-[var(--text-muted)]/20 mb-4 font-mono">{service.num}</div>
+                <h3 className="text-xl font-bold mb-3 group-hover:text-[var(--accent-cyan)] transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-[var(--text-secondary)]">{service.desc}</p>
+              </div>
+
+              {/* 悬停详情弹窗 */}
+              {hoveredService === service.id && (
+                <div className="absolute inset-0 z-20 p-8 rounded-2xl bg-[var(--bg-primary)]/95 border border-[var(--accent-cyan)]/30 backdrop-blur-xl shadow-2xl">
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="text-6xl font-bold text-[var(--accent-cyan)]/20 font-mono">
+                      {service.num}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-2xl font-bold mb-2 text-[var(--accent-cyan)]">{service.title}</h4>
+                      <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">
+                        {t('services.label')}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 详细描述 */}
+                  <div className="mb-6">
+                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
+                      {service.desc}
+                    </p>
+                  </div>
+
+                  {/* 核心能力 */}
+                  <div className="space-y-3">
+                    <div className="text-xs text-[var(--accent-cyan)] uppercase tracking-wider font-mono mb-2">
+                      核心能力
+                    </div>
+                    <div className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                      {t(`services.${service.id}.details`, { defaultValue: '' })}
+                    </div>
+                  </div>
+
+                  {/* 相关技术 */}
+                  <div className="pt-4 border-t border-[var(--border-color)]">
+                    <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono mb-3">
+                      相关技术
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {t(`services.${service.id}.tech`, { defaultValue: '' }).split(',').map((tech, i) => (
+                        <span
+                          key={`${service.id}-${i}`}
+                          className="px-3 py-1.5 text-xs rounded-full bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)]"
+                        >
+                          {tech.trim()}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

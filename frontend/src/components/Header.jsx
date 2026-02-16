@@ -71,7 +71,7 @@ export function Header() {
 
           {/* Center: Logo */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="logo text-xl font-bold bg-gradient-to-r from-[var(--accent-cyan)] via-[var(--accent-purple)] to-[var(--accent-pink)] bg-clip-text text-transparent">
+            <div className="logo text-xl font-bold">
               zlinks.cc
             </div>
           </div>
@@ -88,18 +88,16 @@ export function Header() {
             </button>
 
             {isLangOpen && (
-              <div className="absolute right-0 top-full mt-2 py-1.5 w-44 bg-[var(--bg-primary)]/90 backdrop-blur-3xl border border-[var(--border-color)] rounded-2xl shadow-2xl overflow-hidden">
+              <div className="absolute right-0 top-full mt-2 py-1.5 w-48 rounded-2xl glass-dropdown overflow-hidden">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className={`w-full px-4 py-2.5 text-left text-sm hover:bg-[var(--accent-cyan)]/10 transition-all ${
-                      i18n.language === lang.code
-                        ? 'bg-[var(--accent-cyan)]/15 text-[var(--accent-cyan)] font-medium'
-                        : 'text-[var(--text-secondary)]'
+                    className={`dropdown-item w-full px-4 py-2.5 text-left text-sm ${
+                      i18n.language === lang.code ? 'active' : ''
                     }`}
                   >
-                    {lang.name}
+                    <span>{lang.name}</span>
                   </button>
                 ))}
               </div>

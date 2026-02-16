@@ -40,29 +40,27 @@ export function ThemeToggle() {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-24 right-8 z-[1001] w-48 p-4 rounded-2xl bg-[var(--bg-tertiary)] border border-[var(--border-color)] shadow-2xl">
+        <div className="fixed bottom-24 right-8 z-[1001] w-52 p-4 rounded-2xl glass-dropdown">
           <div className="text-xs uppercase tracking-wider text-[var(--text-muted)] mb-3 font-mono">
             {t('theme.select')}
           </div>
-          <div className="space-y-2">
-            {themes.map((t) => (
+          <div className="space-y-1.5">
+            {themes.map((themeItem) => (
               <button
-                key={t.id}
+                key={themeItem.id}
                 onClick={() => {
-                  setTheme(t.id);
+                  setTheme(themeItem.id);
                   setIsOpen(false);
                 }}
-                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-                  theme === t.id
-                    ? 'bg-[var(--accent-cyan)]/10 text-[var(--accent-cyan)]'
-                    : 'text-[var(--text-secondary)] hover:bg-white/5'
+                className={`dropdown-item w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm ${
+                  theme === themeItem.id ? 'active' : ''
                 }`}
               >
                 <div
-                  className="w-5 h-5 rounded border border-white/20"
-                  style={{ background: t.bg }}
+                  className="w-5 h-5 rounded-lg border border-[var(--border-color)] flex-shrink-0"
+                  style={{ background: themeItem.bg }}
                 />
-                {t('theme.' + t.id)}
+                <span>{t('theme.' + themeItem.id)}</span>
               </button>
             ))}
           </div>
@@ -71,7 +69,7 @@ export function ThemeToggle() {
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[1000]"
+          className="fixed inset-0 z-[1000] glass-backdrop"
           onClick={() => setIsOpen(false)}
         />
       )}

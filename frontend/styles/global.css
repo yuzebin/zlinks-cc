@@ -271,12 +271,40 @@ body::before {
   transform: translateY(0);
 }
 
-/* Language dropdown glassmorphism */
-.nav-link-glass + div {
-  background: rgba(var(--bg-primary-rgb, 10, 10, 15), 0.9);
-  backdrop-filter: blur(20px) saturate(180%);
+/* Glassmorphism Dropdown Panel - 统一的下拉菜单毛玻璃样式 */
+.glass-dropdown {
+  background: rgba(var(--bg-primary-rgb, 10, 10, 15), 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--border-color);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown Item - 下拉菜单项样式 */
+.dropdown-item {
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.08);
+  transform: translateX(4px);
+}
+
+.dropdown-item.active {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.12);
+  font-weight: 500;
+}
+
+/* Backdrop overlay - 遮罩层 */
+.glass-backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 /* Logo text gradient enhancement */

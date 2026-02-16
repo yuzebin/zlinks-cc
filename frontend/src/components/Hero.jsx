@@ -76,7 +76,7 @@ export function Hero() {
         </p>
         <div className="flex flex-wrap justify-center gap-8 md:gap-16">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-[var(--accent-cyan)] mb-1">10+</div>
+            <div className="text-3xl md:text-4xl font-bold text-[var(--accent-cyan)] mb-1">20+</div>
             <div className="text-sm text-[var(--text-muted)]">{t('stats.years')}</div>
           </div>
           <div className="text-center">
@@ -84,7 +84,7 @@ export function Hero() {
             <div className="text-sm text-[var(--text-muted)]">{t('stats.projects')}</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-[var(--accent-cyan)] mb-1">∞</div>
+            <div className="text-3xl md:text-4xl font-bold text-[var(--accent-cyan)] mb-1">8+</div>
             <div className="text-sm text-[var(--text-muted)]">{t('stats.innovation')}</div>
           </div>
         </div>
