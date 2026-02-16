@@ -4,6 +4,9 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  corePlugins: {
+    preflight: false, // Disable Tailwind's Preflight to avoid overriding our custom styles
+  },
   theme: {
     extend: {
       colors: {

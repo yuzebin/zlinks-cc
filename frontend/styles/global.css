@@ -1,7 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* Theme CSS Variables - Must come BEFORE Tailwind directives */
 :root,
 [data-theme="dark"] {
   --bg-primary: #0a0a0f;
@@ -150,6 +147,11 @@ body::before {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-cyan);
 }
+
+/* Tailwind CSS - Must come AFTER CSS variables to use them */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Theme Toggle */
 .theme-toggle {
