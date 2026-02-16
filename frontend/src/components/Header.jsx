@@ -88,14 +88,14 @@ export function Header() {
             </button>
 
             {isLangOpen && (
-              <div className="absolute right-0 top-full mt-2 py-2 w-44 bg-[var(--bg-tertiary)]/95 backdrop-blur-2xl border border-[var(--border-color)] rounded-2xl shadow-2xl overflow-hidden">
+              <div className="absolute right-0 top-full mt-2 py-1.5 w-44 bg-[var(--bg-primary)]/90 backdrop-blur-3xl border border-[var(--border-color)] rounded-2xl shadow-2xl overflow-hidden">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang.code)}
-                    className={`w-full px-4 py-2 text-left text-sm hover:bg-[var(--accent-cyan)]/15 transition-all ${
+                    className={`w-full px-4 py-2.5 text-left text-sm hover:bg-[var(--accent-cyan)]/10 transition-all ${
                       i18n.language === lang.code
-                        ? 'bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)] font-medium'
+                        ? 'bg-[var(--accent-cyan)]/15 text-[var(--accent-cyan)] font-medium'
                         : 'text-[var(--text-secondary)]'
                     }`}
                   >
