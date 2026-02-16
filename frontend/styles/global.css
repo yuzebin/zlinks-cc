@@ -251,6 +251,35 @@ body::before {
 @tailwind components;
 @tailwind utilities;
 
+/* Glassmorphism Navigation */
+.nav-link-glass {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.nav-link-glass:hover {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.08);
+  border-color: rgba(0, 240, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.nav-link-glass:active {
+  transform: translateY(0);
+}
+
+/* Logo text gradient enhancement */
+.logo {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 50%, var(--accent-pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
 /* Theme Toggle */
 .theme-toggle {
   position: fixed;
