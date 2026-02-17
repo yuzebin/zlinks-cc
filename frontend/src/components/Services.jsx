@@ -44,14 +44,14 @@ export function Services() {
 
               {/* 悬停详情弹窗 */}
               {hoveredService === service.id && (
-                <div className="absolute inset-0 z-30 p-8 rounded-2xl bg-[var(--bg-tertiary)] border border-[var(--accent-cyan)]/40 shadow-2xl ring-1 ring-[var(--accent-cyan)]/20">
+                <div className="absolute inset-0 z-30 p-8 rounded-2xl bg-[#12121a] border border-[var(--accent-cyan)]/40 shadow-2xl">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="text-6xl font-bold text-[var(--accent-cyan)]/20 font-mono">
                       {service.num}
                     </div>
                     <div className="flex-1">
                       <h4 className="text-2xl font-bold mb-2 text-[var(--accent-cyan)]">{service.title}</h4>
-                      <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">
+                      <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-mono">
                         {t('services.label')}
                       </div>
                     </div>

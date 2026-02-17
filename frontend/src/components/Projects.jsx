@@ -64,7 +64,7 @@ export function Projects() {
 
               {/* 悬停详情弹窗 */}
               {hoveredProject === project.id && (
-                <div className="absolute inset-0 z-30 p-6 rounded-2xl bg-[var(--bg-tertiary)] border border-[var(--accent-cyan)]/40 shadow-2xl ring-1 ring-[var(--accent-cyan)]/20">
+                <div className="absolute inset-0 z-30 p-6 rounded-2xl bg-[#12121a] border border-[var(--accent-cyan)]/40 shadow-2xl">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="text-5xl">{project.icon}</div>
                     <div className="flex-1">
