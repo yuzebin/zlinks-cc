@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const projects = [
@@ -20,10 +19,8 @@ const projects = [
   { id: 'aigc', icon: '✨', title: 'AIGC内容平台', tags: ['AIGC', 'Stable Diffusion', 'API服务', '用户系统'] },
 ];
 
-// Fix hover modal background visibility - using solid dark color
 export function Projects() {
   const { t } = useTranslation();
-  const [hoveredProject, setHoveredProject] = useState(null);
 
   return (
     <section id="projects" className="py-24 px-6">
@@ -34,77 +31,58 @@ export function Projects() {
           <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">{t('projects.subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <div
-              key={project.id}
-              className="relative group"
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
-            >
-              {/* 卡片主体 */}
-              <div className="p-6 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[var(--accent-cyan)]/30 transition-all duration-300">
-                <div className="text-4xl mb-4">{project.icon}</div>
-                <h3 className="text-lg font-bold mb-2 group-hover:text-[var(--accent-cyan)] transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-2">
-                  {t(`projects.${project.id}.desc`, { defaultValue: '' })}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 text-xs rounded-full bg-[var(--bg-tertiary)] text-[var(--text-muted)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+            <div key={project.id} className="rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] p-8">
+              {/* 标题区 */}
+              <div className="flex items-start gap-6 mb-6">
+                <div className="text-6xl">{project.icon}</div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-2 text-[var(--accent-cyan)]">{project.title}</h3>
+                  <div className="text-sm text-[var(--text-muted)] uppercase tracking-wider font-mono">{t('projects.label')}</div>
                 </div>
               </div>
 
-              {/* 悬停详情弹窗 */}
-              {hoveredProject === project.id && (
-                <div className="absolute inset-0 z-30 p-6 rounded-2xl bg-modal-bg border border-[var(--accent-cyan)]/40 shadow-2xl">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="text-5xl">{project.icon}</div>
-                    <div className="flex-1">
-                      <h4 className="text-xl font-bold mb-2 text-[var(--accent-cyan)]">{project.title}</h4>
-                      <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-mono">
-                        {t('projects.label')}
-                      </div>
-                    </div>
-                  </div>
+              {/* 简短描述 */}
+              <p className="text-sm text-[var(--text-secondary)] mb-6 leading-relaxed">
+                {t(`projects.${project.id}.desc`, { defaultValue: '' })}
+              </p>
 
-                  {/* 技术标签 */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs rounded-full bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              {/* 技术标签 */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1.5 text-sm rounded-full bg-[var(--bg-tertiary)] text-[var(--accent-cyan)]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
 
-                  {/* 详细描述 */}
-                  <div className="space-y-3 text-sm text-[var(--text-secondary)] leading-relaxed">
-                    {t(`projects.${project.id}.details`, { defaultValue: '' })}
-                  </div>
+              {/* 详细描述 */}
+              <div className="mb-6">
+                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">详细说明</h4>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {t(`projects.${project.id}.details`, { defaultValue: '' })}
+                </p>
+              </div>
 
-                  {/* 底部操作区 */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-[var(--border-color)]">
-                    <div className="flex-1 text-xs text-[var(--text-muted)]">
-                      <div className="text-[var(--accent-cyan)] font-semibold mb-1">核心技能</div>
-                      <div>{t(`projects.${project.id}.skills`, { defaultValue: '' })}</div>
-                    </div>
-                    <div className="text-[var(--text-muted)]">
-                      {t(`projects.${project.id}.tech`, { defaultValue: '' })}
-                    </div>
-                  </div>
+              {/* 核心能力 */}
+              <div className="mb-6">
+                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">核心技能</h4>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {t(`projects.${project.id}.skills`, { defaultValue: '' })}
+                </p>
+              </div>
+
+              {/* 技术栈 */}
+              <div>
+                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">技术栈</h4>
+                <div className="text-sm text-[var(--text-muted)] leading-relaxed">
+                  {t(`projects.${project.id}.tech`, { defaultValue: '' })}
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

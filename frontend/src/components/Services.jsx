@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const services = [
@@ -14,7 +13,6 @@ const services = [
 
 export function Services() {
   const { t } = useTranslation();
-  const [hoveredService, setHoveredService] = useState(null);
 
   return (
     <section id="services" className="py-24 px-6 bg-[var(--bg-secondary)]/30">
@@ -27,71 +25,55 @@ export function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service) => (
-            <div
-              key={service.id}
-              className="relative group"
-              onMouseEnter={() => setHoveredService(service.id)}
-              onMouseLeave={() => setHoveredService(null)}
-            >
-              {/* 卡片主体 */}
-              <div className="p-8 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] hover:border-[var(--accent-cyan)]/30 transition-all duration-300">
-                <div className="text-6xl font-bold text-[var(--text-muted)]/20 mb-4 font-mono">{service.num}</div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-[var(--accent-cyan)] transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-[var(--text-secondary)]">{service.desc}</p>
-              </div>
-
-              {/* 悬停详情弹窗 */}
-              {hoveredService === service.id && (
-                <div className="absolute inset-0 z-30 p-8 rounded-2xl bg-modal-bg border border-[var(--accent-cyan)]/40 shadow-2xl">
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="text-6xl font-bold text-[var(--accent-cyan)]/20 font-mono">
-                      {service.num}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-2xl font-bold mb-2 text-[var(--accent-cyan)]">{service.title}</h4>
-                      <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider mb-2 font-mono">
-                        {t('services.label')}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 详细描述 */}
-                  <div className="mb-6">
-                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-3">
-                      {service.desc}
-                    </p>
-                  </div>
-
-                  {/* 核心能力 */}
-                  <div className="space-y-3">
-                    <div className="text-xs text-[var(--accent-cyan)] uppercase tracking-wider font-mono mb-2">
-                      核心能力
-                    </div>
-                    <div className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                      {t(`services.${service.id}.details`, { defaultValue: '' })}
-                    </div>
-                  </div>
-
-                  {/* 相关技术 */}
-                  <div className="pt-4 border-t border-[var(--border-color)]">
-                    <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono mb-3">
-                      相关技术
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {t(`services.${service.id}.tech`, { defaultValue: '' }).split(',').map((tech, i) => (
-                        <span
-                          key={`${service.id}-${i}`}
-                          className="px-3 py-1.5 text-xs rounded-full bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)]"
-                        >
-                          {tech.trim()}
-                        </span>
-                      ))}
-                    </div>
+            <div key={service.id} className="rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] p-8">
+              {/* 标题区 */}
+              <div className="flex items-start gap-6 mb-8">
+                <div className="text-6xl font-bold text-[var(--text-muted)]/20 font-mono">
+                  {service.num}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-[var(--accent-cyan)] mb-3">{service.title}</h3>
+                  <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">
+                    {t('services.label')}
                   </div>
                 </div>
-              )}
+              </div>
+
+              {/* 描述 */}
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-8">
+                {service.desc}
+              </p>
+
+              {/* 详细说明 */}
+              <div className="mb-6">
+                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">详细说明</h4>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {t(`services.${service.id}.details`, { defaultValue: '' })}
+                </p>
+              </div>
+
+              {/* 核心能力 */}
+              <div className="mb-6">
+                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">核心能力</h4>
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  {t(`services.${service.id}.skills`, { defaultValue: '' })}
+                </p>
+              </div>
+
+              {/* 相关技术 */}
+              <div>
+                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">相关技术</h4>
+                <div className="flex flex-wrap gap-2">
+                  {t(`services.${service.id}.tech`, { defaultValue: '' }).split(',').map((tech, i) => (
+                    <span
+                      key={`${service.id}-${i}`}
+                      className="px-3 py-1.5 text-xs rounded-full bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)]"
+                    >
+                      {tech.trim()}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>
