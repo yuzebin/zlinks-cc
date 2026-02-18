@@ -42,6 +42,13 @@ jobs:
           echo "=== Assets ==="
           ls -la frontend/dist/assets/
 
+      - name: Verify build files
+        run: |
+          echo "=== Checking if bg-modal-bg is in JS ==="
+          if [ -f frontend/dist/assets/main-*.js ]; then
+            grep -l "bg-modal-bg" frontend/dist/assets/main-*.js || echo "WARNING: bg-modal-bg not found in JS"
+          fi
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:

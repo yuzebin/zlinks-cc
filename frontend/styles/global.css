@@ -251,6 +251,11 @@ body::before {
 @tailwind components;
 @tailwind utilities;
 
+/* Hover Modal Background - 悬停详情弹窗背景 */
+.bg-modal-bg {
+  background-color: #12121a;
+}
+
 /* Glassmorphism Navigation */
 .nav-link-glass {
   color: var(--text-secondary);
