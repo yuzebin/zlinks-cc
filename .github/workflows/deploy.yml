@@ -35,6 +35,13 @@ jobs:
           cd frontend
           npm run build
 
+      - name: List dist contents
+        run: |
+          echo "=== Frontend dist contents ==="
+          ls -la frontend/dist/
+          echo "=== Assets ==="
+          ls -la frontend/dist/assets/
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:

@@ -20,6 +20,7 @@ const projects = [
   { id: 'aigc', icon: '✨', title: 'AIGC内容平台', tags: ['AIGC', 'Stable Diffusion', 'API服务', '用户系统'] },
 ];
 
+// Fix hover modal background visibility - using solid dark color
 export function Projects() {
   const { t } = useTranslation();
   const [hoveredProject, setHoveredProject] = useState(null);
