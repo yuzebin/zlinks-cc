@@ -25,62 +25,35 @@ export function Projects() {
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="text-sm text-[var(--accent-cyan)] uppercase tracking-wider mb-4">{t('projects.label')}</div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('projects.title')}</h2>
+        <div className="text-center mb-12">
+          <div className="text-sm text-[var(--accent-cyan)] uppercase tracking-wider mb-3">{t('projects.label')}</div>
+          <h2 className="text-2xl md:text-4xl font-bold mb-3">{t('projects.title')}</h2>
           <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">{t('projects.subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {projects.map((project) => (
-            <div key={project.id} className="rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] p-8">
-              {/* 标题区 */}
-              <div className="flex items-start gap-6 mb-6">
-                <div className="text-6xl">{project.icon}</div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2 text-[var(--accent-cyan)]">{project.title}</h3>
-                  <div className="text-sm text-[var(--text-muted)] uppercase tracking-wider font-mono">{t('projects.label')}</div>
+            <div key={project.id} className="group">
+              <div className="rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] p-5 hover:border-[var(--accent-cyan)]/30 transition-all duration-300">
+                {/* 标题区 */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="text-4xl">{project.icon}</div>
+                  <div>
+                    <h3 className="text-base font-bold text-[var(--accent-cyan)]">{project.title}</h3>
+                    <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">{t('projects.label')}</div>
+                  </div>
                 </div>
-              </div>
 
-              {/* 简短描述 */}
-              <p className="text-sm text-[var(--text-secondary)] mb-6 leading-relaxed">
-                {t(`projects.${project.id}.desc`, { defaultValue: '' })}
-              </p>
-
-              {/* 技术标签 */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1.5 text-sm rounded-full bg-[var(--bg-tertiary)] text-[var(--accent-cyan)]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* 详细描述 */}
-              <div className="mb-6">
-                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">详细说明</h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {t(`projects.${project.id}.details`, { defaultValue: '' })}
+                {/* 简短描述 - 技术标签 */}
+                <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-2">
+                  {t(`projects.${project.id}.desc`, { defaultValue: '' })}
                 </p>
-              </div>
-
-              {/* 核心能力 */}
-              <div className="mb-6">
-                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">核心技能</h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {t(`projects.${project.id}.skills`, { defaultValue: '' })}
-                </p>
-              </div>
-
-              {/* 技术栈 */}
-              <div>
-                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">技术栈</h4>
-                <div className="text-sm text-[var(--text-muted)] leading-relaxed">
-                  {t(`projects.${project.id}.tech`, { defaultValue: '' })}
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-2 py-0.5 text-xs rounded-full bg-[var(--bg-tertiary)] text-[var(--text-muted)]">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

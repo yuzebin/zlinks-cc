@@ -17,63 +17,30 @@ export function Services() {
   return (
     <section id="services" className="py-24 px-6 bg-[var(--bg-secondary)]/30">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="text-sm text-[var(--accent-cyan)] uppercase tracking-wider mb-4">{t('services.label')}</div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">{t('services.title')}</h2>
+        <div className="text-center mb-12">
+          <div className="text-sm text-[var(--accent-cyan)] uppercase tracking-wider mb-3">{t('services.label')}</div>
+          <h2 className="text-2xl md:text-4xl font-bold mb-3">{t('services.title')}</h2>
           <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">{t('services.subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {services.map((service) => (
-            <div key={service.id} className="rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-color)] p-8">
+            <div key={service.id} className="rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] p-5 hover:border-[var(--accent-cyan)]/30 transition-all duration-300">
               {/* 标题区 */}
-              <div className="flex items-start gap-6 mb-8">
-                <div className="text-6xl font-bold text-[var(--text-muted)]/20 font-mono">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="text-5xl font-bold text-[var(--text-muted)]/20 font-mono">
                   {service.num}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-[var(--accent-cyan)] mb-3">{service.title}</h3>
-                  <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">
-                    {t('services.label')}
-                  </div>
+                  <h3 className="text-lg font-bold text-[var(--accent-cyan)]">{service.title}</h3>
+                  <div className="text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">{t('services.label')}</div>
                 </div>
               </div>
 
               {/* 描述 */}
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-8">
+              <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-4">
                 {service.desc}
               </p>
-
-              {/* 详细说明 */}
-              <div className="mb-6">
-                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">详细说明</h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {t(`services.${service.id}.details`, { defaultValue: '' })}
-                </p>
-              </div>
-
-              {/* 核心能力 */}
-              <div className="mb-6">
-                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">核心能力</h4>
-                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                  {t(`services.${service.id}.skills`, { defaultValue: '' })}
-                </p>
-              </div>
-
-              {/* 相关技术 */}
-              <div>
-                <h4 className="text-sm text-[var(--accent-cyan)] font-semibold mb-3 uppercase tracking-wider">相关技术</h4>
-                <div className="flex flex-wrap gap-2">
-                  {t(`services.${service.id}.tech`, { defaultValue: '' }).split(',').map((tech, i) => (
-                    <span
-                      key={`${service.id}-${i}`}
-                      className="px-3 py-1.5 text-xs rounded-full bg-[var(--accent-cyan)]/20 text-[var(--accent-cyan)]"
-                    >
-                      {tech.trim()}
-                    </span>
-                  ))}
-                </div>
-              </div>
             </div>
           ))}
         </div>
