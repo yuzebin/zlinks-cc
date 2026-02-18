@@ -44,7 +44,7 @@ export function Services() {
 
               {/* 悬停详情弹窗 */}
               {hoveredService === service.id && (
-                <div className="absolute inset-0 z-30 p-8 rounded-2xl bg-[#12121a] border border-[var(--accent-cyan)]/40 shadow-2xl">
+                <div className="absolute inset-0 z-30 p-8 rounded-2xl bg-modal-bg border border-[var(--accent-cyan)]/40 shadow-2xl">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="text-6xl font-bold text-[var(--accent-cyan)]/20 font-mono">
                       {service.num}

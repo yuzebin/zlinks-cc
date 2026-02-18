@@ -10,6 +10,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Hard-coded colors for hover modals
+        'modal-bg': '#12121a',
         // Using CSS variables for theme support
         'bg-primary': 'var(--bg-primary)',
         'bg-secondary': 'var(--bg-secondary)',
